@@ -31,5 +31,5 @@ class Deque
 		int itsSize;
 		int itsCap;
 };
-#include "Deque.cii"
+
 #endif

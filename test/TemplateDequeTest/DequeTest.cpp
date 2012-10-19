@@ -1,5 +1,5 @@
-#include "../TestHarness/TestHarness.h"
-#include "Deque.h"
+#include "CppUnitLite/TestHarness.h"
+#include "Deque.cpp"
 
 int main()
 {
