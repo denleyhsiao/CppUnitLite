@@ -1,4 +1,4 @@
-#include "../TestHarness/TestHarness.h"
+#include "CppUnitLite\TestHarness.h"
 #include "Deque.h"
 
 int main()
