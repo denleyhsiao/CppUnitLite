@@ -39,9 +39,10 @@ RSC=rc.exe
 # PROP Use_Debug_Libraries 0
 # PROP Output_Dir "Release"
 # PROP Intermediate_Dir "Release"
+# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O2 /I "../../" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /c
+# ADD CPP /nologo /W3 /GX /O2 /I "../../include/" /I "../../include/CppUnitLite/" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /c
 # ADD BASE RSC /l 0x409 /d "NDEBUG"
 # ADD RSC /l 0x409 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -62,9 +63,10 @@ LINK32=link.exe
 # PROP Use_Debug_Libraries 1
 # PROP Output_Dir "Debug"
 # PROP Intermediate_Dir "Debug"
+# PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "../../" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ /c
+# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "../../include/" /I "../../include/CppUnitLite/" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ /c
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
 # ADD RSC /l 0x409 /d "_DEBUG"
 BSC32=bscmake.exe
@@ -85,11 +87,11 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=..\..\CppUnitLite\Failure.cpp
+SOURCE=..\..\src\Failure.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\CppUnitLite\SimpleString.cpp
+SOURCE=..\..\src\SimpleString.cpp
 # End Source File
 # Begin Source File
 
@@ -101,15 +103,15 @@ SOURCE=.\StackTest.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\CppUnitLite\Test.cpp
+SOURCE=..\..\src\Test.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\CppUnitLite\TestRegistry.cpp
+SOURCE=..\..\src\TestRegistry.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\CppUnitLite\TestResult.cpp
+SOURCE=..\..\src\TestResult.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -117,31 +119,27 @@ SOURCE=..\..\CppUnitLite\TestResult.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=..\..\CppUnitLite\Failure.h
+SOURCE=..\..\include\CppUnitLite\Failure.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\CppUnitLite\SimpleString.h
+SOURCE=..\..\include\CppUnitLite\SimpleString.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Stack.h
+SOURCE=..\..\include\CppUnitLite\Test.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\CppUnitLite\Test.h
+SOURCE=..\..\include\CppUnitLite\TestHarness.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\CppUnitLite\TestHarness.h
+SOURCE=..\..\include\CppUnitLite\TestRegistry.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\..\CppUnitLite\TestRegistry.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\CppUnitLite\TestResult.h
+SOURCE=..\..\include\CppUnitLite\TestResult.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"
