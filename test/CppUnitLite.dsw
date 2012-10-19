@@ -3,7 +3,7 @@ Microsoft Developer Studio Workspace File, Format Version 6.00
 
 ###############################################################################
 
-Project: "CppUnitTests"=.\CppUnitTests.dsp - Package Owner=<4>
+Project: "CppUnitLite"=.\StackTest\StackTest.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
