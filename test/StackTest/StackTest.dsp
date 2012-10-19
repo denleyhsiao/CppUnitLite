@@ -42,7 +42,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O2 /I "../../include/" /I "../../include/CppUnitLite/" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O2 /I "../../include/" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /c
 # ADD BASE RSC /l 0x409 /d "NDEBUG"
 # ADD RSC /l 0x409 /d "NDEBUG"
 BSC32=bscmake.exe
@@ -50,7 +50,11 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /machine:I386
+# ADD LINK32 CppUnitLite.lib /nologo /subsystem:console /machine:I386 /libpath:"../../lib/"
+# Begin Special Build Tool
+SOURCE="$(InputPath)"
+PostBuild_Cmds=../lib/refresh.bat
+# End Special Build Tool
 
 !ELSEIF  "$(CFG)" == "StackTest - Win32 Debug"
 
@@ -66,7 +70,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /I "../../include/" /I "../../include/CppUnitLite/" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../../include/" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ /c
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
 # ADD RSC /l 0x409 /d "_DEBUG"
 BSC32=bscmake.exe
@@ -74,7 +78,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /debug /machine:I386 /pdbtype:sept
+# ADD LINK32 CppUnitLiteD.lib /nologo /subsystem:console /debug /machine:I386 /pdbtype:sept /libpath:"../../lib/"
 
 !ENDIF 
 
@@ -87,31 +91,11 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=..\..\src\Failure.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\src\SimpleString.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\StackMain.cpp
 # End Source File
 # Begin Source File
 
 SOURCE=.\StackTest.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\src\Test.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\src\TestRegistry.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\src\TestResult.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -119,27 +103,7 @@ SOURCE=..\..\src\TestResult.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=..\..\include\CppUnitLite\Failure.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\include\CppUnitLite\SimpleString.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\include\CppUnitLite\Test.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\include\CppUnitLite\TestHarness.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\include\CppUnitLite\TestRegistry.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\..\include\CppUnitLite\TestResult.h
+SOURCE=.\Stack.h
 # End Source File
 # End Group
 # Begin Group "Resource Files"
