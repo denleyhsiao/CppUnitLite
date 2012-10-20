@@ -50,6 +50,10 @@ BSC32=bscmake.exe
 LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
 # ADD LIB32 /nologo
+# Begin Special Build Tool
+SOURCE="$(InputPath)"
+PostBuild_Cmds=updateLibrary.bat
+# End Special Build Tool
 
 !ELSEIF  "$(CFG)" == "CppUnitLite - Win32 Debug"
 
@@ -73,6 +77,10 @@ BSC32=bscmake.exe
 LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
 # ADD LIB32 /nologo
+# Begin Special Build Tool
+SOURCE="$(InputPath)"
+PostBuild_Cmds=updateLibrary.bat
+# End Special Build Tool
 
 !ENDIF 
 
