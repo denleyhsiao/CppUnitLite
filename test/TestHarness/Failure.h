@@ -10,6 +10,7 @@
 
  
 #include <string>
+#include <iostream>
 
 class Failure
 {
