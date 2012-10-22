@@ -14,12 +14,8 @@ Release/
 *.cache
 config.*
 configure.scan
-depcomp
-install-sh
 ltmain.sh
-missing
 stamp-h1
 Makefile
-Makefile.in
 .deps/
 .libs/
