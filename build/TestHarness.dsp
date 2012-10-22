@@ -52,7 +52,7 @@ LIB32=link.exe -lib
 # ADD LIB32 /nologo
 # Begin Special Build Tool
 SOURCE="$(InputPath)"
-PostBuild_Cmds=copy  Release\TestHarness.lib  ..\bin\ 
+PostBuild_Cmds=copy   Release\TestHarness.lib   ..\lib\ 
 # End Special Build Tool
 
 !ELSEIF  "$(CFG)" == "TestHarness - Win32 Debug"
