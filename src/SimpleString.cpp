@@ -30,9 +30,12 @@ SimpleString::SimpleString (const SimpleString& other)
 
 SimpleString SimpleString::operator= (const SimpleString& other)
 {
-	delete buffer;
-	buffer = new char [other.size() + 1];
-	strcpy(buffer, other.buffer);	
+	if (this != &other)
+	{
+		delete[] buffer;
+		buffer = new char [other.size() + 1];
+		strcpy(buffer, other.buffer);	
+	}
 	return *this;
 }
 
@@ -49,7 +52,7 @@ int SimpleString::size() const
 
 SimpleString::~SimpleString ()
 {
-	delete [] buffer;
+	delete[] buffer;
 }
 
 

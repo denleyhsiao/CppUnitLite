@@ -6,6 +6,7 @@ class Deque
 	public:
 		Deque();
 		Deque(const Deque& d);
+		~Deque();
 		int size() const;
 		int capacity() const;
 		void push_back(int i);

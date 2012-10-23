@@ -5,6 +5,11 @@ Deque::Deque() : itsSize(0), itsCap(10)
 	itsData = new int[itsCap];
 }
 
+Deque::~Deque()
+{
+	delete[] itsData;
+}
+
 Deque::Deque(const Deque& other) : itsSize(other.size()),
                                    itsCap(other.capacity())
 {
