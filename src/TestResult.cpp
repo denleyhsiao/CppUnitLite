@@ -1,3 +1,8 @@
+//
+// Copyright (c) 2004 Michael Feathers and James Grenning
+// Released under the terms of the GNU General Public License version 2 or later.
+//
+
 
 #include "TestResult.h"
 #include "Failure.h"
@@ -6,7 +11,12 @@
 
 
 TestResult::TestResult ()
-	: failureCount (0)
+: testCount(0)
+, runCount(0)
+, checkCount(0)
+, failureCount (0)
+, filteredOutCount(0)
+, ignoredCount(0)
 {
 }
 
@@ -18,23 +28,41 @@ void TestResult::testsStarted ()
 
 void TestResult::addFailure (const Failure& failure) 
 {
-	fprintf (stdout, "%s%s%s%s%ld%s%s\n",
-		"Failure: \"",
-		failure.message.asCharString (),
-		"\" " ,
-		"line ",
-		failure.lineNumber,
-		" in ",
-		failure.fileName.asCharString ());
-		
+    failure.Print();		
 	failureCount++;
 }
 
+void TestResult::countTest()
+{
+	testCount++;
+}
+
+void TestResult::countRun()
+{
+	runCount++;
+}
+
+void TestResult::countCheck()
+{
+	checkCount++;
+}
+
+void TestResult::countFilteredOut()
+{
+	filteredOutCount++;
+}
+
+void TestResult::countIgnored()
+{
+	ignoredCount++;
+}
 
 void TestResult::testsEnded () 
 {
 	if (failureCount > 0)
-		fprintf (stdout, "There were %d failures\n", failureCount);
+		fprintf (stdout, "\nErrors (%ld failures, ", failureCount);
 	else
-		fprintf (stdout, "There were no test failures\n");
+		fprintf (stdout, "\nOK (");
+	fprintf (stdout, "%ld tests , %ld ran, %ld checks, %ld ignored, %ld filtered out)\n", 
+		testCount, runCount, checkCount, ignoredCount , filteredOutCount);
 }

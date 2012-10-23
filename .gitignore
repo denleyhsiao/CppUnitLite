@@ -12,6 +12,12 @@ Release/
 *.log
 *.m4
 *.cache
+*.in
+*.tar.gz
+install-sh
+missing
+depcomp
+configure
 config.*
 configure.scan
 ltmain.sh

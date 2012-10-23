@@ -1,3 +1,7 @@
+//
+// Copyright (c) 2004 Michael Feathers and James Grenning
+// Released under the terms of the GNU General Public License version 2 or later.
+//
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -12,25 +16,26 @@
 #ifndef SIMPLE_STRING
 #define SIMPLE_STRING
 
-
+#include <string>
 
 class SimpleString
 {
 	friend bool	operator== (const SimpleString& left, const SimpleString& right);
 
 public:
-						SimpleString ();
-						SimpleString (const char *value);
-						SimpleString (const SimpleString& other);
-						~SimpleString ();
+	SimpleString ();
+	SimpleString (const char *value);
+	SimpleString (const SimpleString& other);
+	~SimpleString ();
 
-	SimpleString		operator= (const SimpleString& other);
+	SimpleString& operator= (const SimpleString& other);
+	bool contains(const SimpleString& other) const;
 
-	char				*asCharString () const;
-	int					size() const;
+	char *asCharString () const;
+	int	size() const;
 
 private:
-	char				*buffer;
+	char *buffer;
 };
 
 
@@ -40,6 +45,7 @@ SimpleString StringFrom (const char *value);
 SimpleString StringFrom (long value);
 SimpleString StringFrom (double value);
 SimpleString StringFrom (const SimpleString& other);
+SimpleString StringFrom (const std::string& other);
 
 
 #endif

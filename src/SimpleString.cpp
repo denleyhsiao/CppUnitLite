@@ -1,9 +1,14 @@
+//
+// Copyright (c) 2004 Michael Feathers and James Grenning
+// Released under the terms of the GNU General Public License version 2 or later.
+//
 
 
 #include "SimpleString.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 static const int DEFAULT_SIZE = 20;
@@ -28,17 +33,18 @@ SimpleString::SimpleString (const SimpleString& other)
 }
 
 
-SimpleString SimpleString::operator= (const SimpleString& other)
+SimpleString& SimpleString::operator= (const SimpleString& other)
 {
-	if (this != &other)
-	{
-		delete[] buffer;
-		buffer = new char [other.size() + 1];
-		strcpy(buffer, other.buffer);	
-	}
+	delete buffer;
+	buffer = new char [other.size() + 1];
+	strcpy(buffer, other.buffer);	
 	return *this;
 }
 
+bool SimpleString::contains(const SimpleString& other) const
+{
+    return strstr(buffer, other.buffer) != NULL;
+}
 
 char *SimpleString::asCharString () const
 {
@@ -52,13 +58,13 @@ int SimpleString::size() const
 
 SimpleString::~SimpleString ()
 {
-	delete[] buffer;
+	delete [] buffer;
 }
 
 
 bool operator== (const SimpleString& left, const SimpleString& right)
 {
-	return !strcmp (left.asCharString (), right.asCharString ());
+  return 0 == strcmp (left.asCharString (), right.asCharString ());
 }
 
 
@@ -96,3 +102,7 @@ SimpleString StringFrom (const SimpleString& value)
 }
 
 
+SimpleString StringFrom (const std::string& value)
+{
+	return SimpleString(value.c_str());
+}

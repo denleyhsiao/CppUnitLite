@@ -1,50 +1,58 @@
+//
+// Copyright (c) 2004 Michael Feathers and James Grenning
+// Released under the terms of the GNU General Public License version 2 or later.
+//
+
 
 
 #include "Failure.h"
+#include "Test.h"
 
-#include <stdio.h>
-#include <string.h> 
+#include <cstdio>  // for sprintf()
+#include <cstring> // for strlen()
 
 
-Failure::Failure (const SimpleString&	theTestName, 
-				  const SimpleString&	theFileName, 
-		          long	 				theLineNumber,
-		          const SimpleString&	theCondition) 
-: message (theCondition), 
-  testName (theTestName), 
-  fileName (theFileName), 
-  lineNumber (theLineNumber)
+Failure::Failure(Test* test, const SimpleString& theMessage) 
+: testName (test->getFormattedName()) 
+, fileName (test->getFile()) 
+, lineNumber (test->getLineNumber())
+, message (theMessage)
+{
+}
+
+Failure::Failure(Test* test) 
+: testName (test->getFormattedName()) 
+, fileName (test->getFile()) 
+, lineNumber (test->getLineNumber())
+, message("no message")
 {
 }
 
 
-Failure::Failure (const SimpleString&	theTestName, 
-			 	  const SimpleString&	theFileName, 
-				  long					theLineNumber,
-				  const SimpleString&	expected,
-				  const SimpleString&	actual) 
-: testName (theTestName), 
-  fileName (theFileName), 
-  lineNumber (theLineNumber)
+void Failure::PrintLeader()const
 {
-	char *part1 = "expected ";
-	char *part3 = " but was: ";
+    fprintf (stdout, "\nFailure in %s\n\t%s\n\tline: %d\n",
+        testName.asCharString(),
+        fileName.asCharString(),
+        lineNumber);
+}
 
-	char *stage = new char [strlen (part1) 
-					+ expected.size () 
-					+ strlen (part3)
-					+ actual.size ()
-					+ 1];
+void Failure::Print()const
+{
+    PrintLeader();
+    PrintSpecifics();
+    PrintTrailer();
+}
 
-	sprintf(stage, "%s%s%s%s", 
-		part1, 
-		expected.asCharString(), 
-		part3, 
-		actual.asCharString());
+void Failure::PrintSpecifics()const
+{
+    fprintf (stdout, "\t%s",
+		message.asCharString());
+}
 
-	message = SimpleString(stage);
-
-	delete[] stage;
+void Failure::PrintTrailer()const
+{
+    fprintf (stdout, "\n\n");
 }
 
 

@@ -4,17 +4,22 @@
 #include <string>
 
 
-SimpleString StringFrom(const std::string& value)
+namespace
 {
-	return SimpleString(value.c_str());
+	void SetUp()
+	{
+		
+	}
+	void TearDown()
+	{
+		
+	}
 }
-
-
 
 TEST( Stack, creation )
 {
   Stack s;
   LONGS_EQUAL(0, s.size());
   std::string b = "asa";
-  CHECK_EQUAL("asa", b);
+  CHECK_EQUAL(std::string("asa"), b);
 }

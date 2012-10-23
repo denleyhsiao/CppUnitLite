@@ -6,43 +6,41 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 //
-// FAILURE.H
+// EqualsFailure.H
 //
-// Failure is a class which holds information pertaining to a specific
-// test failure. It can be overriden for more complex failure messages
+// EqualsFailure is a class which holds information pertaining to a specific
+// test failure.
 //
 ///////////////////////////////////////////////////////////////////////////////
 
 
-#ifndef FAILURE_H
-#define FAILURE_H
+#ifndef EQUALS_FAILURE_H
+#define EQUALS_FAILURE_H
 
 #include "SimpleString.h"
+#include "Failure.h"
 
-class Test;
 
-class Failure
+class EqualsFailure : public Failure
 {
 
 public:
-    Failure(Test*, const SimpleString& theMessage);
-    Failure(Test*);
-
-    virtual void Print() const;
+    EqualsFailure(Test*,
+                    const SimpleString& expected,
+                    const SimpleString& actual);
 
 protected:
-    virtual void PrintLeader() const;
     virtual void PrintSpecifics() const;
-    virtual void PrintTrailer() const;
 
 private:
 	SimpleString message;
+	SimpleString testGroupName;
 	SimpleString testName;
 	SimpleString fileName;
-	long lineNumber;
+	long  lineNumber;
 
-    Failure(const Failure&);
-    operator=(const Failure&);
+    EqualsFailure(const EqualsFailure&);
+    operator=(const EqualsFailure&);
 
 };
 

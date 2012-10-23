@@ -93,6 +93,14 @@ PostBuild_Cmds=copy Debug\CppUnitLite.lib ..\lib\CppUnitLiteD.lib
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
+SOURCE=..\src\CommandLineTestRunner.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\src\EqualsFailure.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\Failure.cpp
 # End Source File
 # Begin Source File
@@ -111,13 +119,29 @@ SOURCE=..\src\TestRegistry.cpp
 
 SOURCE=..\src\TestResult.cpp
 # End Source File
+# Begin Source File
+
+SOURCE=..\src\Win32MemoryLeakWarning.cpp
+# End Source File
 # End Group
 # Begin Group "Header Files"
 
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
+SOURCE=..\include\CppUnitLite\CommandLineTestRunner.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\CppUnitLite\EqualsFailure.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\include\CppUnitLite\Failure.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\include\CppUnitLite\MemoryLeakWarning.h
 # End Source File
 # Begin Source File
 

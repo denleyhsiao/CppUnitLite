@@ -8,6 +8,18 @@ int main()
 	return 0;
 }
 
+namespace
+{
+	void SetUp()
+	{
+
+	}
+	void TearDown()
+	{
+
+	}
+}
+
 TEST( Deque, construction)
 {
 	Deque<int> d;
