@@ -8,3 +8,6 @@ automake --foreign --add-missing --copy
 make
 make install
 
+# make distcheck
+# make dist
+# make distclean

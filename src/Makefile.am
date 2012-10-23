@@ -7,4 +7,4 @@ libCppUnitLite_a_SOURCES= Test.cpp \
 	SimpleString.cpp \
 	Failure.cpp
 	
-INCLUDES= -I$(top_srcdir)/include -I$(top_srcdir)/include/CppUnitLite
+INCLUDES= -I../include -I../include/CppUnitLite
