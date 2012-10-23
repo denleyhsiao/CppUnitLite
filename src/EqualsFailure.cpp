@@ -28,7 +28,7 @@ EqualsFailure::EqualsFailure(Test* test,
 
 	message = SimpleString(stage);
 
-	delete stage;
+	delete[] stage;
 }
 
 

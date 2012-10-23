@@ -60,9 +60,9 @@ void TestResult::countIgnored()
 void TestResult::testsEnded () 
 {
 	if (failureCount > 0)
-		fprintf (stdout, "\nErrors (%ld failures, ", failureCount);
+		fprintf (stdout, "\nErrors (%d failures, ", failureCount);
 	else
 		fprintf (stdout, "\nOK (");
-	fprintf (stdout, "%ld tests , %ld ran, %ld checks, %ld ignored, %ld filtered out)\n", 
+	fprintf (stdout, "%d tests , %d ran, %d checks, %d ignored, %d filtered out)\n", 
 		testCount, runCount, checkCount, ignoredCount , filteredOutCount);
 }

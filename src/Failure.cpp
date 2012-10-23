@@ -31,7 +31,7 @@ Failure::Failure(Test* test)
 
 void Failure::PrintLeader()const
 {
-    fprintf (stdout, "\nFailure in %s\n\t%s\n\tline: %d\n",
+    fprintf (stdout, "\nFailure in %s\n\t%s\n\tline: %ld\n",
         testName.asCharString(),
         fileName.asCharString(),
         lineNumber);
