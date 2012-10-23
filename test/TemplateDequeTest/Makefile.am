@@ -1,8 +1,11 @@
 AUTOMAKE_OPTIONS=foreign
 
-bin_PROGRAMS=TemplateDequeTest
-TemplateDequeTest_SOURCES=DequeTest.cpp \
-	Deque.cpp 
-TemplateDequeTest_LDADD=../../src/libCppUnitLite.a
+INCLUDES=-I$(top_srcdir)/include
 
-INCLUDES=-I../../include
+bin_PROGRAMS = TemplateDequeTest
+TemplateDequeTest_SOURCES = DequeTest.cpp \
+			    Deque.cpp \
+			    Deque.h
+TemplateDequeTest_LDADD = $(top_builddir)/src/libCppUnitLite.a
+
+

@@ -1,8 +1,9 @@
-AUTOMAKE_OPTIONS=foreign
+AUTOMAKE_OPTIONS = foreign
 
-bin_PROGRAMS=StackTest
-StackTest_SOURCES=StackMain.cpp \
-	StackTest.cpp 
-StackTest_LDADD=../../src/libCppUnitLite.a
+INCLUDES = -I$(top_srcdir)/include
 
-INCLUDES=-I../../include
+bin_PROGRAMS = StackTest
+StackTest_SOURCES = StackMain.cpp \
+		    StackTest.cpp \
+		    Stack.h
+StackTest_LDADD = $(top_builddir)/src/libCppUnitLite.a

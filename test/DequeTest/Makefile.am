@@ -1,8 +1,9 @@
-AUTOMAKE_OPTIONS=foreign
+AUTOMAKE_OPTIONS = foreign
 
-bin_PROGRAMS=DequeTest
-DequeTest_SOURCES=DequeTest.cpp \
-	Deque.cpp 
-DequeTest_LDADD=../../src/libCppUnitLite.a
+INCLUDES = -I$(top_srcdir)/include
 
-INCLUDES=-I../../include
+bin_PROGRAMS = DequeTest
+DequeTest_SOURCES = DequeTest.cpp \
+		    Deque.cpp \
+		    Deque.h
+DequeTest_LDADD = $(top_builddir)/src/libCppUnitLite.a
