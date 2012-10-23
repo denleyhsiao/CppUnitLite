@@ -19,6 +19,7 @@
 #include "Failure.h"
 #include "EqualsFailure.h"
 #include "TestRegistry.h"
+#include "CommandLineTestRunner.h"
 
 #endif
 

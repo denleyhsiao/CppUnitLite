@@ -1,9 +1,8 @@
 #include "CppUnitLite/TestHarness.h"
 
-int main()
+int main(int argc, char* argv[])
 {
-    TestResult tr;
-    TestRegistry::runAllTests(tr);
+	CommandLineTestRunner::RunAllTests(argc, argv);
 
-  return 0;
+	return 0;
 }

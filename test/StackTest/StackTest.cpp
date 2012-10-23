@@ -1,8 +1,6 @@
 #include "CppUnitLite/TestHarness.h"
 #include "Stack.h"
-
 #include <string>
-
 
 namespace
 {
