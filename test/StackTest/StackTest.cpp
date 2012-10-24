@@ -1,6 +1,5 @@
 #include "CppUnitLite/TestHarness.h"
 #include "Stack.h"
-#include <string>
 
 namespace
 {
@@ -18,6 +17,6 @@ TEST( Stack, creation )
 {
   Stack s;
   LONGS_EQUAL(0, s.size());
-  std::string b = "asa";
-  CHECK_EQUAL(std::string("asa"), b);
+  char* b = "asa";
+  STRCMP_EQUAL("asa", b);
 }

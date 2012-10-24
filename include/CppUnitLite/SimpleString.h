@@ -16,8 +16,6 @@
 #ifndef SIMPLE_STRING
 #define SIMPLE_STRING
 
-#include <string>
-
 class SimpleString
 {
 	friend bool	operator== (const SimpleString& left, const SimpleString& right);
@@ -45,7 +43,6 @@ SimpleString StringFrom (const char *value);
 SimpleString StringFrom (long value);
 SimpleString StringFrom (double value);
 SimpleString StringFrom (const SimpleString& other);
-SimpleString StringFrom (const std::string& other);
 
 
 #endif
