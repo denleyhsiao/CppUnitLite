@@ -103,9 +103,3 @@ SimpleString StringFrom (const SimpleString& value)
 {
 	return SimpleString(value);
 }
-
-
-SimpleString StringFrom (const std::string& value)
-{
-	return SimpleString(value.c_str());
-}
