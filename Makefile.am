@@ -11,5 +11,4 @@ EXTRA_DIST = BUGS autogen.sh \
 	     bin/.gitignore
 
 dist-hook:
-	cp -dpR $(top_srcdir)/include $(distdir)/include
 	cp -dpR $(top_srcdir)/build $(distdir)/build
