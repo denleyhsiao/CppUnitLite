@@ -20,7 +20,7 @@ public:
 		 TestResult () : failureCount (0), testCount(0) {}
 	void testWasRun ();
 	void startTests ();
-	void addFailure (Failure failure);
+	void addFailure (const Failure& failure);
 	void endTests ();
 
 private:

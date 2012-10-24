@@ -26,15 +26,12 @@ EqualsFailure::EqualsFailure(Test* test,
 		expected.asCharString(), 
 		actual.asCharString());
 
-	message = SimpleString(stage);
-
+	setMessage(stage);
 	delete[] stage;
 }
-
-
 
 void EqualsFailure::PrintSpecifics()const
 {
     fprintf (stdout, "%s",
-		message.asCharString());
+		getMessage());
 }

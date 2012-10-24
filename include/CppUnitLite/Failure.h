@@ -27,23 +27,25 @@ class Failure
 public:
     Failure(Test*, const SimpleString& theMessage);
     Failure(Test*);
+    Failure(const Failure& other);
+	virtual ~Failure() {}
 
     virtual void Print() const;
 
 protected:
-    virtual void PrintLeader() const;
+	void setMessage(const char* value);
+	const char* getMessage() const;
+    
+private:
+	Failure& operator=(const Failure&);
+	virtual void PrintLeader() const;
     virtual void PrintSpecifics() const;
     virtual void PrintTrailer() const;
-
-private:
+	
 	SimpleString message;
 	SimpleString testName;
 	SimpleString fileName;
 	long lineNumber;
-
-    Failure(const Failure&);
-    operator=(const Failure&);
-
 };
 
 

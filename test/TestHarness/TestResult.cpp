@@ -15,7 +15,7 @@ void TestResult::startTests ()
 {
 }
 
-void TestResult::addFailure (Failure failure) 
+void TestResult::addFailure (const Failure& failure) 
 {
 	using namespace std;
 

@@ -27,7 +27,7 @@ public:
 };
 
 
-inline std::ostream& operator<< (std::ostream& stream, Failure& failure)
+inline std::ostream& operator<< (std::ostream& stream, const Failure& failure)
 {
 	stream 
 		<< "Failure: \"" << failure.condition.c_str () << "\" " 

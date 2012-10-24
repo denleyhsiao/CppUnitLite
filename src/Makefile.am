@@ -7,4 +7,11 @@ libCppUnitLite_a_SOURCES = Test.cpp \
 		   	   TestRegistry.cpp \
 		   	   TestResult.cpp \
 		   	   SimpleString.cpp \
-		   	   Failure.cpp 
+		   	   Failure.cpp \
+			   EqualsFailure.cpp \
+			   GccMemoryLeakWarning.cpp \
+			   CommandLineTestRunner.cpp
+			 
+EXTRA_DIST = Win32MemoryLeakWarning.cpp \
+	     StarterMemoryLeakWarning.cpp \
+	     SymbianMemoryLeakWarning.cpp

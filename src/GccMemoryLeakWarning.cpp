@@ -1,4 +1,4 @@
-#include "UnitTestHarness/MemoryLeakWarning.h"
+#include "MemoryLeakWarning.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -10,8 +10,30 @@ static int initialArraysUsed = 0;
 
 static char message[100] = "";
 
+void  FinalReport()
+{
+	
+	if (initialBlocksUsed != allocatedBlocks || initialArraysUsed != allocatedArrays )
+    {
+		printf("initial blocks=%d, allocated blocks=%d\ninitial arrays=%d, allocated arrays=%d\n",
+			initialBlocksUsed, allocatedBlocks, initialArraysUsed, allocatedArrays);
+		
+		printf("Memory new/delete imbalance after running tests\n");
+    }
+}
 
-void reportMemoryBallance()
+static int blockUsageCheckPoint = 0;
+static int arrayUsageCheckPoint = 0;
+static int ignoreCount = 0;
+
+void MemoryLeakWarning::Enable()
+{
+  initialBlocksUsed = allocatedBlocks;
+  initialArraysUsed = allocatedArrays;
+  atexit(FinalReport);
+}
+
+void MemoryLeakWarning::Report()
 {
   int blockBalance = allocatedBlocks - initialBlocksUsed;
   int arrayBalance = allocatedArrays - initialArraysUsed;
@@ -38,39 +60,13 @@ void reportMemoryBallance()
     }
 }
 
-
-void MemoryLeakWarning::Enable()
-{
-  initialBlocksUsed = allocatedBlocks;
-  initialArraysUsed = allocatedArrays;
-  atexit(reportMemoryBallance);
-}
-
-const char*  MemoryLeakWarning::FinalReport()
-{
-
-  if (initialBlocksUsed != allocatedBlocks || initialArraysUsed != allocatedArrays )
-    {
-      printf("initial blocks=%d, allocated blocks=%d\ninitial arrays=%d, allocated arrays=%d\n",
-             initialBlocksUsed, allocatedBlocks, initialArraysUsed, allocatedArrays);
-
-      return "Memory new/delete imbalance after running tests\n";
-    }
-  else
-    return "";
-}
-
-static int blockUsageCheckPoint = 0;
-static int arrayUsageCheckPoint = 0;
-static int ignoreCount = 0;
-
 void MemoryLeakWarning::CheckPointUsage()
 {
   blockUsageCheckPoint = allocatedBlocks;
   arrayUsageCheckPoint = allocatedArrays;
 }
 
-bool MemoryLeakWarning::UsageIsNotBalanced()
+bool MemoryLeakWarning::UsageIsNotBallanced()
 {
   int arrayBalance = allocatedArrays - arrayUsageCheckPoint;
   int blockBalance = allocatedBlocks - blockUsageCheckPoint;
@@ -125,7 +121,7 @@ void operator delete[](void* mem)
   free(mem);
 }
 
-void MemoryLeakWarning::IgnoreLeaks(int n)
+void IgnoreLeaks(int n)
 {
     ignoreCount = n;
 }

@@ -45,7 +45,7 @@ Package=<4>
 
 ###############################################################################
 
-Project: "TemplateDeque"=.\TemplateDequeTest.dsp - Package Owner=<4>
+Project: "TemplateDequeTest"=.\TemplateDequeTest.dsp - Package Owner=<4>
 
 Package=<5>
 {{{

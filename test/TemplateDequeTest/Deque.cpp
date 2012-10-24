@@ -14,6 +14,12 @@ inline Deque<T>::Deque(const Deque<T>& other) : itsSize(other.size()),
 }
 
 template <class T>
+inline Deque<T>::~Deque()
+{
+	delete[] itsData;
+}
+
+template <class T>
 inline int Deque<T>::capacity() const
 {
 	return itsCap;

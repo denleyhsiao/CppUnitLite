@@ -33,14 +33,7 @@ protected:
     virtual void PrintSpecifics() const;
 
 private:
-	SimpleString message;
-	SimpleString testGroupName;
-	SimpleString testName;
-	SimpleString fileName;
-	long  lineNumber;
-
-    EqualsFailure(const EqualsFailure&);
-    operator=(const EqualsFailure&);
+    EqualsFailure& operator=(const EqualsFailure&);
 
 };
 

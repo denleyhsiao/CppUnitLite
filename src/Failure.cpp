@@ -28,6 +28,23 @@ Failure::Failure(Test* test)
 {
 }
 
+Failure::Failure( const Failure& other)
+{
+	this->testName = other.testName;
+	this->fileName = other.fileName;
+	this->lineNumber = other.lineNumber;
+	this->message = other.message;
+}
+
+void Failure::setMessage( const char* value )
+{
+	message = value;
+}
+
+const char* Failure::getMessage() const
+{
+	return message.asCharString();	
+}
 
 void Failure::PrintLeader()const
 {
@@ -54,5 +71,3 @@ void Failure::PrintTrailer()const
 {
     fprintf (stdout, "\n\n");
 }
-
-
