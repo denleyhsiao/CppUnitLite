@@ -1,8 +1,19 @@
 #include "CppUnitLite/TestHarness.h"
 #include "Deque.h"
+#include <iostream>
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
 int main(int argc, char* argv[])
 {
+#ifdef DEBUG
+	std::cout<<"DEBUG Version ..."<<std::endl;
+#else
+	std::cout<<"RELEASE Version ..."<<std::endl;
+#endif
+
 	CommandLineTestRunner::RunAllTests(argc, argv);
 
 	return 0;
