@@ -16,9 +16,8 @@
 #define TEST_H
 
 
-#include <vector>
-#include <cmath>
 #include "SimpleString.h"
+#include <string.h>
 
 class TestResult;
 

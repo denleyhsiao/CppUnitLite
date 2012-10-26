@@ -6,6 +6,7 @@
 
 #include "CommandLineTestRunner.h"
 #include "MemoryLeakWarning.h"
+#include <stdlib.h>
 
 int CommandLineTestRunner::repeat = 0;
 

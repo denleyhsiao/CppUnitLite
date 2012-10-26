@@ -9,7 +9,7 @@
 #include "TestRegistry.h"
 #include "Failure.h"
 #include "MemoryLeakWarning.h"
-
+#include <stdio.h>
 
 TestRegistry::TestRegistry()
 : tests(0)

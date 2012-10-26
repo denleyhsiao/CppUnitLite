@@ -9,6 +9,7 @@
 #include "TestResult.h"
 #include "Failure.h"
 #include "EqualsFailure.h"
+#include <stdio.h>
 
 namespace
 {
