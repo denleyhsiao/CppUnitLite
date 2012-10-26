@@ -51,8 +51,10 @@ LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
 # ADD LIB32 /nologo
 # Begin Special Build Tool
+TargetPath=.\Release\CppUnitLite.lib
+TargetName=CppUnitLite
 SOURCE="$(InputPath)"
-PostBuild_Cmds=copy Release\CppUnitLite.lib ..\lib\CppUnitLite.lib
+PostBuild_Cmds=copy "$(TargetPath)" ..\lib\$(TargetName).lib
 # End Special Build Tool
 
 !ELSEIF  "$(CFG)" == "CppUnitLite - Win32 Debug"
@@ -78,8 +80,10 @@ LIB32=link.exe -lib
 # ADD BASE LIB32 /nologo
 # ADD LIB32 /nologo
 # Begin Special Build Tool
+TargetPath=.\Debug\CppUnitLite.lib
+TargetName=CppUnitLite
 SOURCE="$(InputPath)"
-PostBuild_Cmds=copy Debug\CppUnitLite.lib ..\lib\CppUnitLiteD.lib
+PostBuild_Cmds=copy "$(TargetPath)" ..\lib\$(TargetName)D.lib
 # End Special Build Tool
 
 !ENDIF 
