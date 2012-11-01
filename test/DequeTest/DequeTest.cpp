@@ -1,4 +1,5 @@
 #include "CppUnitLite/TestHarness.h"
+#include "CppUnitLite/TestDefaultConfig.h"
 #include "Deque.h"
 #include <iostream>
 
@@ -17,18 +18,6 @@ int main(int argc, char* argv[])
 	CommandLineTestRunner::RunAllTests(argc, argv);
 
 	return 0;
-}
-
-namespace
-{
-	void SetUp()
-	{
-		
-	}
-	void TearDown()
-	{
-		
-	}
 }
 
 TEST( Deque, construction)

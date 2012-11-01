@@ -23,5 +23,6 @@ CppUnitLiteinclude_HEADERS = $(top_srcdir)/include/CppUnitLite/CommandLineTestRu
 			     $(top_srcdir)/include/CppUnitLite/Test.h \
 			     $(top_srcdir)/include/CppUnitLite/TestHarness.h \
 			     $(top_srcdir)/include/CppUnitLite/TestRegistry.h \
-			     $(top_srcdir)/include/CppUnitLite/TestResult.h
+			     $(top_srcdir)/include/CppUnitLite/TestResult.h \
+			     $(top_srcdir)/include/CppUnitLite/TestDefaultConfig.h
 

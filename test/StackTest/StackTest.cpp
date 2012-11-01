@@ -1,17 +1,6 @@
 #include "CppUnitLite/TestHarness.h"
+#include "CppUnitLite/TestDefaultConfig.h"
 #include "Stack.h"
-
-namespace
-{
-	void SetUp()
-	{
-		
-	}
-	void TearDown()
-	{
-		
-	}
-}
 
 TEST( Stack, creation )
 {

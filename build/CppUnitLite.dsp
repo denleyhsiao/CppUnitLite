@@ -157,6 +157,10 @@ SOURCE=..\include\CppUnitLite\Test.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\include\CppUnitLite\TestDefaultConfig.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\include\CppUnitLite\TestHarness.h
 # End Source File
 # Begin Source File
