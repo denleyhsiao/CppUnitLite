@@ -46,7 +46,7 @@ const char* Failure::getMessage() const
 	return message.asCharString();	
 }
 
-void Failure::PrintLeader()const
+void Failure::printLeader()const
 {
     fprintf (stdout, "\nFailure in %s\n\t%s\n\tline: %ld\n",
         testName.asCharString(),
@@ -54,20 +54,20 @@ void Failure::PrintLeader()const
         lineNumber);
 }
 
-void Failure::Print()const
+void Failure::print()const
 {
-    PrintLeader();
-    PrintSpecifics();
-    PrintTrailer();
+    printLeader();
+    printSpecifics();
+    printTrailer();
 }
 
-void Failure::PrintSpecifics()const
+void Failure::printSpecifics()const
 {
     fprintf (stdout, "\t%s",
 		message.asCharString());
 }
 
-void Failure::PrintTrailer()const
+void Failure::printTrailer()const
 {
     fprintf (stdout, "\n\n");
 }

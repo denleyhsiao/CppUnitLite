@@ -30,7 +30,7 @@ public:
     Failure(const Failure& other);
 	virtual ~Failure() {}
 
-    virtual void Print() const;
+    virtual void print() const;
 
 protected:
 	void setMessage(const char* value);
@@ -38,9 +38,9 @@ protected:
     
 private:
 	Failure& operator=(const Failure&);
-	virtual void PrintLeader() const;
-    virtual void PrintSpecifics() const;
-    virtual void PrintTrailer() const;
+	virtual void printLeader() const;
+    virtual void printSpecifics() const;
+    virtual void printTrailer() const;
 	
 	SimpleString message;
 	SimpleString testName;

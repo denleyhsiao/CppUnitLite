@@ -30,7 +30,7 @@ public:
                     const SimpleString& actual);
 
 protected:
-    virtual void PrintSpecifics() const;
+    virtual void printSpecifics() const;
 
 private:
     EqualsFailure& operator=(const EqualsFailure&);

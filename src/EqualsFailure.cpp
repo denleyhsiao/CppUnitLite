@@ -30,7 +30,7 @@ EqualsFailure::EqualsFailure(Test* test,
 	delete[] stage;
 }
 
-void EqualsFailure::PrintSpecifics()const
+void EqualsFailure::printSpecifics()const
 {
     fprintf (stdout, "%s",
 		getMessage());

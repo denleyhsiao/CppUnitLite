@@ -28,7 +28,7 @@ void TestResult::testsStarted ()
 
 void TestResult::addFailure (const Failure& failure) 
 {
-    failure.Print();		
+    failure.print();		
 	failureCount++;
 }
 
