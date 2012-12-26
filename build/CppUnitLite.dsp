@@ -117,6 +117,10 @@ SOURCE=..\src\Test.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\TestDefaultConfig.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\TestRegistry.cpp
 # End Source File
 # Begin Source File

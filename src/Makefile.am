@@ -13,7 +13,8 @@ libCppUnitLite_a_SOURCES = Test.cpp \
 		   	   Failure.cpp \
 			   EqualsFailure.cpp \
 			   GccMemoryLeakWarning.cpp \
-			   CommandLineTestRunner.cpp
+			   CommandLineTestRunner.cpp \
+			   TestDefaultConfig.cpp
 CppUnitLiteincludedir = $(includedir)/CppUnitLite
 CppUnitLiteinclude_HEADERS = $(top_srcdir)/include/CppUnitLite/CommandLineTestRunner.h \
 			     $(top_srcdir)/include/CppUnitLite/EqualsFailure.h \
