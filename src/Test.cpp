@@ -67,7 +67,7 @@ const SimpleString& Test::getName() const
 
 SimpleString Test::getFormattedName() const
 {	
-    char* format = "%s(%s, %s)";
+    const char* format = "%s(%s, %s)";
     char *stage = new char [strlen(format) - (3 * strlen("%s"))
         + getMacroName().size()
 		+ group_.size () 

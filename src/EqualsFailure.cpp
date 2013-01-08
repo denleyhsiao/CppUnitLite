@@ -15,7 +15,7 @@ EqualsFailure::EqualsFailure(Test* test,
                         const SimpleString& actual)
 : Failure(test)
 {
-	char *format = "\texpected <%s>\n\tbut was  <%s>";
+	const char *format = "\texpected <%s>\n\tbut was  <%s>";
 
 	char *stage = new char [strlen(format) - (2 * strlen("%s")) 
 					+ expected.size () 

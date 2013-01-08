@@ -6,6 +6,6 @@ TEST( Stack, creation )
 {
   Stack s;
   LONGS_EQUAL(0, s.size());
-  char* b = "asa";
+  const char* b = "asa";
   STRCMP_EQUAL("asa", b);
 }
