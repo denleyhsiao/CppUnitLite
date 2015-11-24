@@ -1,5 +1,5 @@
 # CppUnitLite
-[![Build Status](travis_image)](travis_url)
+[![Build Status][travis_image]][travis_url]
 
 lightweight C++ unit test framework, is based on the original by Michael Feathers.
 See http://c2.com/cgi/wiki?CppUnitLite for information.
