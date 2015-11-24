@@ -1,5 +1,6 @@
 # CppUnitLite
 [![Build Status][travis_image]][travis_url]
+[![MIT License][license-image]][license-url]
 
 lightweight C++ unit test framework, is based on the original by Michael Feathers.
 See http://c2.com/cgi/wiki?CppUnitLite for information.
@@ -18,3 +19,6 @@ After build success, run:
 
 [travis_image]: https://travis-ci.org/ietjxdl/CppUnitLite.svg
 [travis_url]: https://travis-ci.org/ietjxdl/CppUnitLite
+
+[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-url]: LICENSE
