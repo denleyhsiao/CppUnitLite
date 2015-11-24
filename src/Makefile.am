@@ -3,7 +3,7 @@ AUTOMAKE_OPTIONS = foreign
 EXTRA_DIST = Win32MemoryLeakWarning.cpp \
 	     StarterMemoryLeakWarning.cpp \
 	     SymbianMemoryLeakWarning.cpp
-INCLUDES = -I$(top_srcdir)/include -I$(top_srcdir)/include/CppUnitLite
+AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/include/CppUnitLite
 
 lib_LIBRARIES = libCppUnitLite.a
 libCppUnitLite_a_SOURCES = Test.cpp \
@@ -26,4 +26,3 @@ CppUnitLiteinclude_HEADERS = $(top_srcdir)/include/CppUnitLite/CommandLineTestRu
 			     $(top_srcdir)/include/CppUnitLite/TestRegistry.h \
 			     $(top_srcdir)/include/CppUnitLite/TestResult.h \
 			     $(top_srcdir)/include/CppUnitLite/TestDefaultConfig.h
-
