@@ -14,9 +14,9 @@ Follow steps are use command line and under CppUnitLite directory.
 
 ## Test
 After build success, run:
-<pre><code>./test/DequeTest/DequeTest
-./test/StackTest/StackTest
-./test/TemplateDequeTest/TemplateDequeTest
+<pre><code>./sample/DequeTest/DequeTest
+./sample/StackTest/StackTest
+./sample/TemplateDequeTest/TemplateDequeTest
 </code></pre>
 
 [travis_image]: https://travis-ci.org/ietjxdl/CppUnitLite.svg

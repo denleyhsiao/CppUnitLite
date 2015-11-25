@@ -31,8 +31,8 @@ AC_ARG_ENABLE([debug],
 
 AC_CONFIG_FILES([Makefile
                  src/Makefile
-                 test/DequeTest/Makefile
-                 test/StackTest/Makefile
-                 test/TemplateDequeTest/Makefile
-                 test/TestHarness/Makefile])
+                 sample/DequeTest/Makefile
+                 sample/StackTest/Makefile
+                 sample/TemplateDequeTest/Makefile
+                 sample/TestHarness/Makefile])
 AC_OUTPUT

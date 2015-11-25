@@ -1,10 +1,10 @@
 AUTOMAKE_OPTIONS=foreign
 
 SUBDIRS = src \
-	  test/TestHarness \
-	  test/DequeTest \
-	  test/TemplateDequeTest \
-	  test/StackTest
+	  sample/TestHarness \
+	  sample/DequeTest \
+	  sample/TemplateDequeTest \
+	  sample/StackTest
 
 EXTRA_DIST = BUGS autogen.sh \
 	     lib/.gitignore \
