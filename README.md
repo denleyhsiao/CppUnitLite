@@ -12,7 +12,7 @@ Follow steps are use command line and under CppUnitLite directory.
 <pre><code>./autogen.sh
 </code></pre>
 
-## Test
+## Usage & Sample
 After build success, run:
 <pre><code>./sample/DequeTest/DequeTest
 ./sample/StackTest/StackTest
