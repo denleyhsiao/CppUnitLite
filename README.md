@@ -7,17 +7,26 @@
 Lightweight C++ unit test framework, is based on the original by Michael Feathers.
 See http://c2.com/cgi/wiki?CppUnitLite for information.
 
-Follow steps are use command line and under CppUnitLite directory.
+Follow steps are use command line and under CppUnitLite root directory.
+
 ## Build
-<pre><code>./autogen.sh
-</code></pre>
+Required installed cmake.
+
+```
+mkdir build
+cd build
+cmake ..
+make
+```
 
 ## Usage & Sample
-After build success, run:
-<pre><code>./sample/DequeTest/DequeTest
-./sample/StackTest/StackTest
-./sample/TemplateDequeTest/TemplateDequeTest
-</code></pre>
+After build success, run:  
+
+```shell
+./bin/DequeTest
+./bin/StackTest
+./bin/TemplateDequeTest
+```
 
 [travis_image]: https://travis-ci.org/denleyhsiao/CppUnitLite.svg
 [travis_url]: https://travis-ci.org/denleyhsiao/CppUnitLite
