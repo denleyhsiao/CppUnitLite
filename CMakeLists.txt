@@ -1,0 +1,60 @@
+cmake_minimum_required(VERSION 3.5.0)
+
+function(print warnings)
+  foreach(f ${warnings})
+    message(${f})
+  endforeach(f)
+endfunction()
+
+function(current_warning index)
+  if (WIN32)
+    set(${index} 0 PARENT_SCOPE)
+  elseif(UNIX)
+    set(${index} 1 PARENT_SCOPE)
+  elseif(SYMBIAN)
+    set(${index} 2 PARENT_SCOPE)
+  else()
+    set(${index} 3 PARENT_SCOPE)
+  endif()
+endfunction()
+
+function(full_warnings source target)
+  set(target_)
+  foreach(warning ${source})
+    list(APPEND target_ "src/${warning}MemoryLeakWarning.cpp")
+  endforeach(warning)
+  set(${target} ${target_} PARENT_SCOPE)
+endfunction()
+
+function(ignore_warnings source current target)
+  list(REMOVE_AT source ${current})
+  
+  set(target_)
+  full_warnings("${source}" target_)
+  set(${target} ${target_} PARENT_SCOPE)
+endfunction()
+
+function(filter_sources sources targets)
+  set(current)
+  current_warning(current)
+  
+  set(warnings Win32 Gcc Symbian Starter)
+  set(target)
+  ignore_warnings("${warnings}" ${current} target)
+  list(REMOVE_ITEM sources ${target})
+  set(${targets} ${sources} PARENT_SCOPE)
+endfunction()
+
+project(CppUnitLite)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+include_directories("${CMAKE_SOURCE_DIR}/include/CppUnitLite")
+aux_source_directory(src CPPUNITLITE_SOURCES)
+set(targets)
+filter_sources("${CPPUNITLITE_SOURCES}" targets)
+
+add_library(CppUnitLite ${targets})
+
+add_subdirectory(sample)

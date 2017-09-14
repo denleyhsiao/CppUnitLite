@@ -25,3 +25,6 @@ stamp-h1
 Makefile
 .deps/
 .libs/
+
+compile
+build
