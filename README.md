@@ -12,7 +12,7 @@
 ```bash
 mkdir -p build
 cd build
-ccmake ..  # 配置，可省略，详见“配置说明”
+ccmake ..  # 可省略，详见“配置说明”
 cmake ..
 make
 make install
@@ -28,6 +28,17 @@ make install
 - DequeTest.cpp: 使用缺省SetUp/TearDown的单元测试
 - Deque.h/Deque.cpp: 队列的定义与实现
 
+## 对比
+各分支的特点
+* master
+    - 不依赖于STL，通过SimpleString重写了string
+    - 支持自定义SetUp/TearDown，也有缺省的支持
+    - 有内存泄漏检测
+* light
+    - 依赖于STL的string
+    - 不支持SetUp/TearDown
+    - 可以像boost一样直接将源码包含进项目，而不需要其它配置
+    
 [travis_image]: https://travis-ci.org/denleyhsiao/CppUnitLite.svg
 [travis_url]: https://travis-ci.org/denleyhsiao/CppUnitLite
 
