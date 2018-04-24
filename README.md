@@ -17,6 +17,7 @@ cmake ..
 make
 make install
 ```
+注：卸载安装：`cat install_manifest.txt | sudo xargs rm`
 
 ### 配置说明
 * ENABLE_MEMORYLEAKWARN：是否打开内存泄漏检测，缺省打开
@@ -34,10 +35,11 @@ make install
     - 不依赖于STL，通过SimpleString重写了string
     - 支持自定义SetUp/TearDown，也有缺省的支持
     - 有内存泄漏检测
+    - 支持命令行参数
 * light
     - 依赖于STL的string
     - 不支持SetUp/TearDown
-    - 可以像boost一样直接将源码包含进项目，而不需要其它配置
+    - 可以像boost一样直接将源码包含进项目：主要是文件少，只需src+include/CppUnitLite目录下的共8个文件，其实master也是可以这样做的
     
 [travis_image]: https://travis-ci.org/denleyhsiao/CppUnitLite.svg
 [travis_url]: https://travis-ci.org/denleyhsiao/CppUnitLite
