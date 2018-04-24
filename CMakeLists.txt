@@ -1,60 +1,44 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.0)
 
-function(print warnings)
-  foreach(f ${warnings})
-    message(${f})
-  endforeach(f)
-endfunction()
-
-function(current_warning index)
-  if (WIN32)
-    set(${index} 0 PARENT_SCOPE)
-  elseif(UNIX)
-    set(${index} 1 PARENT_SCOPE)
-  elseif(SYMBIAN)
-    set(${index} 2 PARENT_SCOPE)
-  else()
-    set(${index} 3 PARENT_SCOPE)
-  endif()
-endfunction()
-
-function(full_warnings source target)
-  set(target_)
-  foreach(warning ${source})
-    list(APPEND target_ "src/${warning}MemoryLeakWarning.cpp")
-  endforeach(warning)
-  set(${target} ${target_} PARENT_SCOPE)
-endfunction()
-
-function(ignore_warnings source current target)
-  list(REMOVE_AT source ${current})
-  
-  set(target_)
-  full_warnings("${source}" target_)
-  set(${target} ${target_} PARENT_SCOPE)
-endfunction()
-
-function(filter_sources sources targets)
-  set(current)
-  current_warning(current)
-  
-  set(warnings Win32 Gcc Symbian Starter)
-  set(target)
-  ignore_warnings("${warnings}" ${current} target)
-  list(REMOVE_ITEM sources ${target})
-  set(${targets} ${sources} PARENT_SCOPE)
-endfunction()
-
-project(CppUnitLite)
+set(PROJ_NAME CppUnitLite)
+set(PROJ_VERSION_MAJOR 1)
+set(PROJ_VERSION_MINOR 2)
+set(PROJ_VERSION ${PROJ_VERSION_MAJOR}.${PROJ_VERSION_MINOR})
+project (${PROJ_NAME} VERSION ${PROJ_VERSION} LANGUAGES CXX)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
-include_directories("${CMAKE_SOURCE_DIR}/include/CppUnitLite")
-aux_source_directory(src CPPUNITLITE_SOURCES)
-set(targets)
-filter_sources("${CPPUNITLITE_SOURCES}" targets)
 
-add_library(CppUnitLite ${targets})
+configure_file (
+  "${PROJECT_SOURCE_DIR}/cmake/config.h.in"
+  "${PROJECT_BINARY_DIR}/config.h"
+  )
+option(ENABLE_MEMORYLEAKWARN "Open memory leak warn" ON)
 
-add_subdirectory(sample)
+include_directories("${CMAKE_SOURCE_DIR}/include/CppUnitLite"
+  "${PROJECT_BINARY_DIR}"
+  )
+add_library(${PROJ_NAME} "")
+# add_library(${PROJ_NAME} SHARED "")
+
+include("${PROJECT_SOURCE_DIR}/cmake/util.cmake")
+getMemoryLeakType(type)
+target_sources(${PROJ_NAME}
+  PRIVATE
+  "${PROJECT_SOURCE_DIR}/src/CommandLineTestRunner.cpp"
+  "${PROJECT_SOURCE_DIR}/src/EqualsFailure.cpp"
+  "${PROJECT_SOURCE_DIR}/src/Failure.cpp"
+  "${PROJECT_SOURCE_DIR}/src/SimpleString.cpp"
+  "${PROJECT_SOURCE_DIR}/src/Test.cpp"
+  "${PROJECT_SOURCE_DIR}/src/TestDefaultConfig.cpp"
+  "${PROJECT_SOURCE_DIR}/src/TestRegistry.cpp"
+  "${PROJECT_SOURCE_DIR}/src/TestResult.cpp"
+  "${PROJECT_SOURCE_DIR}/src/${type}MemoryLeakWarning.cpp"
+  )
+  
+install (TARGETS ${PROJ_NAME} DESTINATION lib)
+install (DIRECTORY "${PROJECT_SOURCE_DIR}/include/"
+           DESTINATION include)
+
+add_subdirectory(example)

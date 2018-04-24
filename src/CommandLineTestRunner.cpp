@@ -6,14 +6,17 @@
 
 #include "CommandLineTestRunner.h"
 #include "MemoryLeakWarning.h"
+#include "config.h"
 #include <stdlib.h>
 
 int CommandLineTestRunner::repeat = 0;
 
 void CommandLineTestRunner::RunAllTests(int ac, char** av)
 {
+#ifdef ENABLE_MEMORYLEAKWARN
 	MemoryLeakWarning::Enable();
-	
+#endif	
+
 	SetOptions(ac, av);
 	
 	do
@@ -22,7 +25,9 @@ void CommandLineTestRunner::RunAllTests(int ac, char** av)
 		TestRegistry::runAllTests(tr);
 	} while (--repeat);
 	
+#ifdef ENABLE_MEMORYLEAKWARN
 	MemoryLeakWarning::Report();
+#endif
 }
 
 void CommandLineTestRunner::SetOptions(int ac, char** av)

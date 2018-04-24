@@ -1,30 +1,23 @@
 #include "CppUnitLite/TestHarness.h"
 #include "CppUnitLite/TestDefaultConfig.h"
-#include "Deque.cpp"
-
-int main(int argc, char* argv[])
-{
-	CommandLineTestRunner::RunAllTests(argc, argv);
-
-	return 0;
-}
+#include "Deque.h"
 
 TEST( Deque, construction)
 {
-	Deque<int> d;
+	Deque d;
 	CHECK ( 0 == d.size() );
 }
 
 TEST( Deque, push_back)
 {
-	Deque<int> d;
+	Deque d;
 	d.push_back(0);
 	CHECK (	1 == d.size() );
 }
 
 TEST( Deque, pop_back)
 {
-	Deque<int> d;
+	Deque d;
 	d.push_back(0);
 	d.push_back(1);
 	CHECK ( 1 == d.pop_back() );
@@ -33,7 +26,7 @@ TEST( Deque, pop_back)
 
 TEST( Deque, grow)
 {
-	Deque<int> d;
+	Deque d;
 	for (int i = 0; i < 10; i++)
 		d.push_back(i);
 	d.push_back(10);
@@ -43,14 +36,14 @@ TEST( Deque, grow)
 
 TEST (Deque, push_front)
 {
-	Deque<int> d;
+	Deque d;
 	d.push_front(0);
 	CHECK ( 1 == d.size() );
 }
 
 TEST (Deque, doit)
 {
-	Deque<int> d;
+	Deque d;
 	d.push_front(0);
 	d.push_back(1);
 	d.push_back(2);
@@ -62,7 +55,7 @@ TEST (Deque, doit)
 
 TEST (Deque, pop_front)
 {
-	Deque<int> d;
+	Deque d;
 	d.push_front(0);
 	CHECK( 1 == d.size());
 	CHECK( 0 == d.pop_front());
@@ -71,18 +64,18 @@ TEST (Deque, pop_front)
 
 TEST (Deque, copy_construction)
 {
-	Deque<int> d;
+	Deque d;
 	d.push_front(1);
-	Deque<int> d2 = d;
+	Deque d2 = d;
 	d.pop_front();
 	CHECK( 1 == d2.pop_front());
 }
 
 TEST (Deque, assignment_operator)
 {
-	Deque<int> d;
+	Deque d;
 	d.push_front(1);
-	Deque<int> d2;
+	Deque d2;
 	d2 = d;
 	d.pop_front();
 	CHECK( 1 == d2.pop_front());
@@ -90,20 +83,8 @@ TEST (Deque, assignment_operator)
 
 TEST (Deque, dont_try_suicide)
 {
-	Deque<int> d;
+	Deque d;
 	d.push_front(1);
 	d = d;
 	CHECK( 1 == d.pop_front());
-}
-
-TEST (Deque, double_test)
-{
-	Deque<double> d;
-	d.push_front(0.1);
-	d.push_back(1.1);
-	d.push_back(2.1);
-	d.push_back(3.1);
-	CHECK ( 4 == d.size() );
-	CHECK ( 0.1 == d.pop_front() );
-	CHECK ( 3.1 == d.pop_back() );
 }
