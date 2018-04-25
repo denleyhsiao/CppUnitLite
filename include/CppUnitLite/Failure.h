@@ -1,52 +1,41 @@
-//
-// Copyright (c) 2004 Michael Feathers and James Grenning
-// Released under the terms of the GNU General Public License version 2 or later.
-//
-
-
-///////////////////////////////////////////////////////////////////////////////
-//
-// FAILURE.H
-//
-// Failure is a class which holds information pertaining to a specific
-// test failure. It can be overriden for more complex failure messages
-//
-///////////////////////////////////////////////////////////////////////////////
 
 
 #ifndef FAILURE_H
 #define FAILURE_H
 
-#include "SimpleString.h"
+// Failure records the circumstances surrounding a test failure.  Using C++
+// macros were are able to record the name of the file where the failure 
+// occurred, the line number, and the text of the condition which provoked
+// the failure.
 
-class Test;
+ 
+#include <string>
+#include <iostream>
 
 class Failure
 {
-
 public:
-    Failure(Test*, const SimpleString& theMessage);
-    Failure(Test*);
-    Failure(const Failure& other);
-	virtual ~Failure() {}
+	Failure (std::string theCondition, std::string theTestName, std::string theFileName, long theLineNumber) 
+		: condition (theCondition), testName (theTestName), fileName (theFileName), lineNumber (theLineNumber)
+	{
+	}
 
-    virtual void print() const;
-
-protected:
-	void setMessage(const char* value);
-	const char* getMessage() const;
-    
-private:
-	Failure& operator=(const Failure&);
-	virtual void printLeader() const;
-    virtual void printSpecifics() const;
-    virtual void printTrailer() const;
-	
-	SimpleString message;
-	SimpleString testName;
-	SimpleString fileName;
+	std::string condition;
+	std::string testName;
+	std::string fileName;
 	long lineNumber;
 };
 
+
+inline std::ostream& operator<< (std::ostream& stream, const Failure& failure)
+{
+	stream 
+		<< "Failure: \"" << failure.condition.c_str () << "\" " 
+		<< "line " << failure.lineNumber << " in "
+		<< failure.fileName.c_str ()
+		<< std::endl;
+
+	return stream;
+}
 
 #endif

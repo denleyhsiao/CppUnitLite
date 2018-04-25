@@ -1,151 +1,95 @@
-//
-// Copyright (c) 2004 Michael Feathers and James Grenning
-// Released under the terms of the GNU General Public License version 2 or later.
-//
-
-///////////////////////////////////////////////////////////////////////////////
-//
-// TEST.H
-// 
-// This file contains the Test class along with the macros which make effective
-// in the harness.
-//
-///////////////////////////////////////////////////////////////////////////////
 
 #ifndef TEST_H
 #define TEST_H
 
 
-#include "SimpleString.h"
-#include <string.h>
+// Test is a base class for all tests.  It provides a command interface for
+// running tests (run) as well as a data member for recording the name of 
+// the test.
+//
+// Tests are constructed using the TEST macro.  TEST creates a subclass of
+// Test and static instance of that subclass.  If you look at the constructor
+// for the Test class, you'll notice that it registers the created object 
+// with a global TestRegistry.  These features combine to make test creation
+// particularly easy.
+
+
+#include <vector>
+#include <string>
 
 class TestResult;
-
 
 
 class Test
 {
 public:
-	
-	Test (const SimpleString& groupName, 
-		const SimpleString& testName, 
-		const SimpleString& fileName,
-		int lineNumber,         
-		void (*setUp)(), 
-		void (*tearDown)());
-	
-	virtual void	run (TestResult& result) = 0;
-	virtual SimpleString getFormattedName() const;
-	
-	void setNext(Test *test);
-	Test *getNext () const;
-	const SimpleString& getName() const;
-	const SimpleString& getFile() const;
-	int getLineNumber() const;
-	void setUp();
-	void tearDown();
-	
-protected:
-	
-	virtual SimpleString getMacroName() const {return "TEST";}
-	
-private:
-	
-	SimpleString group_;
-	SimpleString name_;
-	SimpleString file_;
-	SimpleString formattedName_;
-	int	lineNumber_;
-	Test *next_;
-	void (*setUp_)();
-	void (*tearDown_)();
-	
-};
+	Test (const std::string& testName);
 
-class IgnoredTest : public Test 
-{
-public:
-	IgnoredTest(const SimpleString& groupName, 
-		const SimpleString& testName, 
-		const SimpleString& fileName,
-		int lineNumber);      
-	
 	virtual void	run (TestResult& result);
-	
+	virtual void	runTest (TestResult& result) = 0;
+
 protected:
-	virtual SimpleString getMacroName() const {return "IGNORE_TEST";}
-	
+	std::string		name;
+
 };
 
 
 
-#define TEST(testGroup, testName)\
-	class testGroup##testName##Test : public Test \
-{ public: testGroup##testName##Test () : Test (#testGroup, #testName, __FILE__,__LINE__, &SetUp, &TearDown) {} \
-	void run (TestResult& result_); } \
-    testGroup##testName##Instance; \
-void testGroup##testName##Test::run (TestResult& result_) 
+#define TEST(name,classUnderTest)\
+	class classUnderTest##name##Test : public Test\
+	{ \
+		public: \
+			classUnderTest##name##Test () : Test (#name "Test") {} \
+			void runTest (TestResult& result_); \
+	} classUnderTest##name##Instance; \
+	void classUnderTest##name##Test::runTest (TestResult& result_) \
 
-#define IGNORE_TEST(testGroup, testName)\
-	class testGroup##testName##Test : public IgnoredTest \
-{ public: testGroup##testName##Test () : IgnoredTest (#testGroup, #testName, __FILE__,__LINE__) {} \
-	void thisNeverRuns (TestResult& result_); } \
-    testGroup##testName##Instance; \
-void testGroup##testName##Test::thisNeverRuns (TestResult& result_) 
 
-#define EXPORT_TEST_GROUP(testGroup)\
-int externTestGroup##testGroup = 0;
 
-#define IMPORT_TEST_GROUP(testGroup) \
-	extern int externTestGroup##testGroup;\
-int* p##testGroup = &externTestGroup##testGroup;
+// Here is a collection of testing macros that can be used in the 
+// bodies of tests.  CHECK tests a boolean expression and records
+// a failure if the expression evaluates to false.  CHECK_LONGS_EQUAL
+// and CHECK_DOUBLES_EQUAL compare longs and doubles respectively.
+//
+// To make this an industrial strength test harness, you should
+// add equals macros for various low level types as you develop them.
+// If, for instance, you have a daterange class, the ability to compare
+// them directly and print out their values in the test output is 
+// invaluable.
 
-//Check any boolean condition
-#define CHECK(condition)\
-{ result_.countCheck(); \
+
+
+
+#define CHECK(condition) \
 	if (!(condition)) \
-{ result_.addFailure (Failure (this, #condition)); return; } }
+		result_.addFailure (Failure (#condition, name, __FILE__, __LINE__));
 
-
-//This check needs the equality operator, and a StringFrom(YourType) function
-#define CHECK_EQUAL(expected,actual)\
-{ result_.countCheck(); \
-	if ((expected) == (actual)) ;\
-	else {result_.addFailure(EqualsFailure(this, StringFrom(expected), StringFrom(actual)));\
-	return;}\
+#define CHECK_LONGS_EQUAL(expected,actual)\
+{\
+	long _expected = (expected);\
+	long _actual = (actual);\
+	if (_expected != _actual) {\
+		char message [80];\
+		sprintf (message, "expected %ld but was: %ld", _expected, _actual);\
+		result_.addFailure (Failure (message, name, __FILE__, __LINE__));\
+	}\
 }
 
-//This check checks for char* string equality using strcmp.  
-//This makes up for the fact that CHECK_EQUAL only compares the pointers to char*'s
-#define STRCMP_EQUAL(expected,actual)\
-{ result_.countCheck(); \
-	if (strcmp(expected, actual) != 0)\
-{ result_.addFailure(EqualsFailure(this, StringFrom(expected), StringFrom(actual)));\
-return;} }
+
+#define CHECK_DOUBLES_EQUAL(expected,actual)\
+{\
+	double _expected = (expected);\
+	double _actual = (actual);\
+	if (fabs ((expected)-(actual)) > 0.001) {\
+		char message [80];\
+		sprintf (message, "expected %lf but was: %lf", (expected), (actual));\
+		result_.addFailure (Failure (message, name, __FILE__, __LINE__));\
+	}\
+}
 
 
-//Check two long integers for equality
-#define LONGS_EQUAL(expected,actual)\
-{ result_.countCheck(); \
-	long actualTemp = actual; \
-	long expectedTemp = expected; \
-	if ((expectedTemp) != (actualTemp)) \
-{ result_.addFailure (EqualsFailure(this, StringFrom(expectedTemp), \
-StringFrom(actualTemp))); return; } }
-
-
-//Check two doubles for equality within a tolerance threshold
-#define DOUBLES_EQUAL(expected,actual,threshold)\
-{ result_.countCheck(); \
-	double actualTemp = actual; \
-	double expectedTemp = expected; \
-	if (fabs ((expectedTemp)-(actualTemp)) > threshold) \
-{ result_.addFailure (EqualsFailure(this, \
-StringFrom((double)expectedTemp), StringFrom((double)actualTemp))); return; } }
-
-
-//Fail if you get to this macro
-#define FAIL(text) \
-{ result_.addFailure (Failure (this,(text))); return; }
 
 #endif
+
+
+

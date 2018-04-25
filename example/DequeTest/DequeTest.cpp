@@ -1,5 +1,4 @@
 #include "CppUnitLite/TestHarness.h"
-#include "CppUnitLite/TestDefaultConfig.h"
 #include "Deque.h"
 
 TEST( Deque, construction)

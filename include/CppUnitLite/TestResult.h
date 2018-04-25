@@ -1,44 +1,31 @@
-//
-// Copyright (c) 2004 Michael Feathers and James Grenning
-// Released under the terms of the GNU General Public License version 2 or later.
-//
-
-///////////////////////////////////////////////////////////////////////////////
-//
-// TESTRESULT.H
-// 
-// A TestResult is a collection of the history of some test runs.  Right now
-// it just collects failures.
-// 
-///////////////////////////////////////////////////////////////////////////////
-
 
 
 #ifndef TESTRESULT_H
 #define TESTRESULT_H
+
+// TestResult is a simple little class which accepts notifications from
+// tests.  In its current form, it takes these notifications and prints
+// them on the standard output.
+//
+// If you need different behavior, you can alter it in place or subclass 
+// TestResult to provide it.  The TestResult hierarchy can be as simple
+// or complex as you require to support your application.
+
 
 class Failure;
 
 class TestResult
 {
 public:
-	TestResult (); 
-	virtual void	testsStarted ();
-	virtual void	countTest();
-	virtual void	countRun();
-	virtual void	countCheck();
-	virtual void	countFilteredOut();
-	virtual void	countIgnored();
-	virtual void	addFailure (const Failure& failure);
-	virtual void	testsEnded ();
-	
+		 TestResult () : failureCount (0), testCount(0) {}
+	void testWasRun ();
+	void startTests ();
+	void addFailure (const Failure& failure);
+	void endTests ();
+
 private:
-	int     testCount;
-	int     runCount;
-	int     checkCount;
-	int		failureCount;
-	int     filteredOutCount;
-	int     ignoredCount;
+	int failureCount;
+	int testCount;
 };
 
 #endif

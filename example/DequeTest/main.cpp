@@ -2,6 +2,8 @@
 
 int main(int argc, char* argv[])
 {
-	CommandLineTestRunner::RunAllTests(argc, argv);
+
+	TestResult tr;
+	TestRegistry::runAllTests(tr);
 	return 0;
 }
