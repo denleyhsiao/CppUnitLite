@@ -40,5 +40,21 @@ target_sources(${PROJ_NAME}
 install (TARGETS ${PROJ_NAME} DESTINATION lib)
 install (DIRECTORY "${PROJECT_SOURCE_DIR}/include/"
            DESTINATION include)
+           
+include (InstallRequiredSystemLibraries)
+set (CPACK_RESOURCE_FILE_LICENSE
+  "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+set (CPACK_PACKAGE_VERSION_MAJOR "${PROJ_VERSION_MAJOR}")
+set (CPACK_PACKAGE_VERSION_MINOR "${PROJ_VERSION_MINOR}")
+set(CPACK_SOURCE_IGNORE_FILES
+  "~$"
+  "^${PROJECT_SOURCE_DIR}/.DS_Store"
+  "^${PROJECT_SOURCE_DIR}/.gitignore"
+  "^${PROJECT_SOURCE_DIR}/.git/"
+  "^${PROJECT_SOURCE_DIR}/build/"
+  "^${PROJECT_SOURCE_DIR}/lib/"
+  "^${PROJECT_SOURCE_DIR}/bin/"
+)
+include (CPack)
 
 add_subdirectory(example)
