@@ -37,8 +37,8 @@ It include follow files:
 | filename |description |
 |---|---|
 |main.cpp|main file|
-|DequeLiteTest.cpp|unit test file with self-define SetUp/TearDown|
-|DequeTest.cpp|unit test file with default SetUp/TearDown|
+|DequeTest.cpp|unit test file with self-define SetUp/TearDown|
+|DequeDefaultTest.cpp|unit test file with default SetUp/TearDown|
 |Deque.h/Deque.cpp|deque define & implement file|
     
 [travis_image]: https://travis-ci.org/denleyhsiao/CppUnitLite.svg
