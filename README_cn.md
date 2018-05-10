@@ -16,6 +16,7 @@ make install
 
 ### 配置说明
 在`cmake ..`之前通过`ccmake ..`进行配置修改
+* BUILD_STATIC_LIBRARY: 创建静态库还是动态库，缺省静态库
 * ENABLE_MEMORYLEAKWARN：是否打开内存泄漏检测，缺省打开
 
 ## 运行

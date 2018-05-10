@@ -23,7 +23,8 @@ NOTE：uninstall：`cat install_manifest.txt | sudo xargs rm`
 
 ### configure
 Before `cmake ..`, run `ccmake ..` to modify configure
-* ENABLE_MEMORYLEAKWARN：ENABLE or DISABLE memory leak warn check，default ENABLE
+* BUILD_STATIC_LIBRARY： Build static or shared library, default static
+* ENABLE_MEMORYLEAKWARN：Open or close memory leak warn check，default open
 
 ## run
 This is a unit test application based deque ：`DequeTest`，and use CppUnitLite as unit test framework. 
