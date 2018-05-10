@@ -15,18 +15,18 @@ namespace {
   }
 }
 
-TEST( DequeLite, construction)
+TEST( Deque, construction)
 {
 	CHECK ( 0 == d->size() );
 }
 
-TEST( DequeLite, push_back)
+TEST( Deque, push_back)
 {
 	d->push_back(0);
 	CHECK (	1 == d->size() );
 }
 
-TEST( DequeLite, pop_back)
+TEST( Deque, pop_back)
 {
 	d->push_back(0);
 	d->push_back(1);
@@ -34,7 +34,7 @@ TEST( DequeLite, pop_back)
 	CHECK ( 0 == d->pop_back() );
 }
 
-TEST( DequeLite, grow)
+TEST( Deque, grow)
 {
 	for (int i = 0; i < 10; i++)
 		d->push_back(i);
@@ -43,13 +43,13 @@ TEST( DequeLite, grow)
 	CHECK ( 10 == d->pop_back() );
 }
 
-TEST (DequeLite, push_front)
+TEST (Deque, push_front)
 {
 	d->push_front(0);
 	CHECK ( 1 == d->size() );
 }
 
-TEST (DequeLite, doit)
+TEST (Deque, doit)
 {
 	d->push_front(0);
 	d->push_back(1);
@@ -60,7 +60,7 @@ TEST (DequeLite, doit)
 	CHECK ( 3 == d->pop_back() );
 }
 
-TEST (DequeLite, pop_front)
+TEST (Deque, pop_front)
 {
 	d->push_front(0);
 	CHECK( 1 == d->size());
@@ -68,7 +68,7 @@ TEST (DequeLite, pop_front)
 	CHECK( 0 == d->size());
 }
 
-TEST (DequeLite, copy_construction)
+TEST (Deque, copy_construction)
 {
 	d->push_front(1);
 	Deque d2 = *d;
@@ -76,7 +76,7 @@ TEST (DequeLite, copy_construction)
 	CHECK( 1 == d2.pop_front());
 }
 
-TEST (DequeLite, assignment_operator)
+TEST (Deque, assignment_operator)
 {
 	d->push_front(1);
 	Deque d2;
@@ -85,7 +85,7 @@ TEST (DequeLite, assignment_operator)
 	CHECK( 1 == d2.pop_front());
 }
 
-TEST (DequeLite, dont_try_suicide)
+TEST (Deque, dont_try_suicide)
 {
 	d->push_front(1);
 	*d = *d;
