@@ -2,22 +2,25 @@
 
 基于[Michael Feathers](http://c2.com/cgi/wiki?CppUnitLite)的轻量级C++测试框架 .
 
-## 编译与安装
-要求系统已经安装cmake工具
-
+## 安装
+两种安装方式，都要求系统已经安装cmake工具
+### 通过brew
 ```bash
-mkdir -p build
-cd build
-cmake ..
+brew tap denleyhsiao/tap && brew install CppUnitLite
+```
+
+### 通过源码
+1. 下载源码：`git clone https://github.com/denleyhsiao/CppUnitLite`，进入源码目录
+2. 修改配置(可选)：`ccmake .`
+    - BUILD_STATIC_LIBRARY: 创建静态库还是动态库，缺省静态库
+    - ENABLE_MEMORYLEAKWARN：是否打开内存泄漏检测，缺省打开
+3. 编译安装
+```bash
+cmake .
 make
 make install
 ```
-注：卸载安装：`cat install_manifest.txt | sudo xargs rm`
-
-### 配置说明
-在`cmake ..`之前通过`ccmake ..`进行配置修改
-* BUILD_STATIC_LIBRARY: 创建静态库还是动态库，缺省静态库
-* ENABLE_MEMORYLEAKWARN：是否打开内存泄漏检测，缺省打开
+4. 卸载：`cat install_manifest.txt | sudo xargs rm`
 
 ## 运行
 因为是单元测试框架，这里运行的是一个基于队列的单元测试程序：`DequeTest`，它包含如下文件

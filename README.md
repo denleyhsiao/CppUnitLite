@@ -9,24 +9,28 @@
 Lightweight C++ unit test framework, is based on the original by Michael Feathers.
 See [more](http://c2.com/cgi/wiki?CppUnitLite).
 
-## build & install
+## Install
 Require installed cmake
+### By brew
+```bash
+brew tap denleyhsiao/tap && brew install CppUnitLite
+```
+
+### By source
+1. Download source: `git clone https://github.com/denleyhsiao/CppUnitLite`
+2. Modify configure: `ccmake .`
+    - BUILD_STATIC_LIBRARY： Build static or shared library, default static
+    - ENABLE_MEMORYLEAKWARN：Open or close memory leak warn check，default open
+3. Build & install
 
 ```bash
-mkdir -p build
-cd build
-cmake ..
+cmake .
 make
 make install
 ```
-NOTE：uninstall：`cat install_manifest.txt | sudo xargs rm`
+4. Uninstall：`cat install_manifest.txt | sudo xargs rm`
 
-### configure
-Before `cmake ..`, run `ccmake ..` to modify configure
-* BUILD_STATIC_LIBRARY： Build static or shared library, default static
-* ENABLE_MEMORYLEAKWARN：Open or close memory leak warn check，default open
-
-## run
+## Run
 This is a unit test application based deque ：`DequeTest`，and use CppUnitLite as unit test framework. 
 It include follow files:
 - Main.cpp: main file 
