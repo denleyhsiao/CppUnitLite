@@ -45,3 +45,6 @@ make install
     - 不支持SetUp/TearDown
     - 可以像boost一样直接将源码包含进项目：主要是文件少，只需src+include/CppUnitLite目录下的共8个文件，其实master也是可以这样做的
     - 没有执行进度条
+    
+## 参考
+* [CppUnit官网](https://www.freedesktop.org/wiki/Software/cppunit/)，含源码
