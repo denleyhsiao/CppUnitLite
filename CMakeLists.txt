@@ -10,10 +10,15 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
+option(BUILD_STATIC_LIBRARY "Build static library" ON)
+
 include_directories("${CMAKE_SOURCE_DIR}/include/CppUnitLite"
   "${PROJECT_BINARY_DIR}"
   )
-add_library(${PROJ_NAME} "")
+  
+include("${PROJECT_SOURCE_DIR}/cmake/util.cmake")
+getLibraryType(${BUILD_STATIC_LIBRARY} lib_type)
+add_library(${PROJ_NAME} ${lib_type} "")
 
 target_sources(${PROJ_NAME}
   PRIVATE

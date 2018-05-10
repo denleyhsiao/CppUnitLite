@@ -1,0 +1,7 @@
+macro(getLibraryType isStatic type)
+  if (${isStatic})
+      set(${type} STATIC)
+  else()
+      set(${type} SHARED)
+  endif()
+endmacro()
