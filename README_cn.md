@@ -24,10 +24,13 @@ make install
 
 ## 运行
 因为是单元测试框架，这里运行的是一个基于队列的单元测试程序：`DequeTest`，它包含如下文件
-- Main.cpp: 主文件 
-- DequeLiteTest.cpp: 自定义SetUp/TearDown的单元测试文件
-- DequeTest.cpp: 使用缺省SetUp/TearDown的单元测试文件
-- Deque.h/Deque.cpp: 队列的定义与实现文件
+
+| 文件名 |描述 |
+|---|---|
+|main.cpp|主文件|
+|DequeTest.cpp|自定义SetUp/TearDown的单元测试文件|
+|DequeDefaultTest.cpp|使用缺省SetUp/TearDown的单元测试文件|
+|Deque.h/Deque.cpp|队列的定义与实现文件|
 
 ## 打包
 * 发布：`cpack --config CPackConfig.cmake`

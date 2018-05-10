@@ -3,7 +3,7 @@
 #include <cassert>
 
 namespace {
-	Deque* d = NULL;
+  Deque* d = NULL;
   void SetUp() {
     d = new Deque();
     assert(d != NULL);

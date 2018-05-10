@@ -33,10 +33,13 @@ make install
 ## Run
 This is a unit test application based deque ：`DequeTest`，and use CppUnitLite as unit test framework. 
 It include follow files:
-- Main.cpp: main file 
-- DequeLiteTest.cpp:  unit test file with self-define SetUp/TearDown
-- DequeTest.cpp: unit test file with default SetUp/TearDown
-- Deque.h/Deque.cpp: deque define & implement file
+
+| filename |description |
+|---|---|
+|main.cpp|main file|
+|DequeLiteTest.cpp|unit test file with self-define SetUp/TearDown|
+|DequeTest.cpp|unit test file with default SetUp/TearDown|
+|Deque.h/Deque.cpp|deque define & implement file|
     
 [travis_image]: https://travis-ci.org/denleyhsiao/CppUnitLite.svg
 [travis_url]: https://travis-ci.org/denleyhsiao/CppUnitLite
