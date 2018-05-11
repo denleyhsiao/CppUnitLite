@@ -1,20 +1,21 @@
-#include "CppUnitLite/TestHarness.h"
+#include "CppUnitLite/CppUnitLite.h"
+#include "CppUnitLite/TestDefaultConfig.h"
 #include "Deque.h"
 
-TEST( Deque, construction)
+TEST( DequeDefault, construction)
 {
 	Deque d;
 	CHECK ( 0 == d.size() );
 }
 
-TEST( Deque, push_back)
+TEST( DequeDefault, push_back)
 {
 	Deque d;
 	d.push_back(0);
 	CHECK (	1 == d.size() );
 }
 
-TEST( Deque, pop_back)
+TEST( DequeDefault, pop_back)
 {
 	Deque d;
 	d.push_back(0);
@@ -23,7 +24,7 @@ TEST( Deque, pop_back)
 	CHECK ( 0 == d.pop_back() );
 }
 
-TEST( Deque, grow)
+TEST( DequeDefault, grow)
 {
 	Deque d;
 	for (int i = 0; i < 10; i++)
@@ -33,14 +34,14 @@ TEST( Deque, grow)
 	CHECK ( 10 == d.pop_back() );
 }
 
-TEST (Deque, push_front)
+TEST (DequeDefault, push_front)
 {
 	Deque d;
 	d.push_front(0);
 	CHECK ( 1 == d.size() );
 }
 
-TEST (Deque, doit)
+TEST (DequeDefault, doit)
 {
 	Deque d;
 	d.push_front(0);
@@ -52,7 +53,7 @@ TEST (Deque, doit)
 	CHECK ( 3 == d.pop_back() );
 }
 
-TEST (Deque, pop_front)
+TEST (DequeDefault, pop_front)
 {
 	Deque d;
 	d.push_front(0);
@@ -61,7 +62,7 @@ TEST (Deque, pop_front)
 	CHECK( 0 == d.size());
 }
 
-TEST (Deque, copy_construction)
+TEST (DequeDefault, copy_construction)
 {
 	Deque d;
 	d.push_front(1);
@@ -70,7 +71,7 @@ TEST (Deque, copy_construction)
 	CHECK( 1 == d2.pop_front());
 }
 
-TEST (Deque, assignment_operator)
+TEST (DequeDefault, assignment_operator)
 {
 	Deque d;
 	d.push_front(1);
@@ -80,7 +81,7 @@ TEST (Deque, assignment_operator)
 	CHECK( 1 == d2.pop_front());
 }
 
-TEST (Deque, dont_try_suicide)
+TEST (DequeDefault, dont_try_suicide)
 {
 	Deque d;
 	d.push_front(1);

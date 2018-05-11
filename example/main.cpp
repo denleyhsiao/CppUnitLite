@@ -1,4 +1,4 @@
-#include "CppUnitLite/TestHarness.h"
+#include "CppUnitLite/CppUnitLite.h"
 
 int main(int argc, char* argv[])
 {
