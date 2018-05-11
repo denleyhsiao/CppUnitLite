@@ -5,9 +5,15 @@
 
 
 #include "CommandLineTestRunner.h"
-#include "MemoryLeakWarning.h"
+#include "TestResult.h"
+#include "TestRegistry.h"
 #include "config.h"
 #include <stdlib.h>
+#include <string.h>
+
+#ifdef ENABLE_MEMORYLEAKWARN
+#include "MemoryLeakWarning.h"
+#endif
 
 int CommandLineTestRunner::repeat = 0;
 

@@ -1,4 +1,4 @@
-#include "CppUnitLite/TestHarness.h"
+#include "CppUnitLite/CppUnitLite.h"
 #include "Deque.h"
 #include <cassert>
 

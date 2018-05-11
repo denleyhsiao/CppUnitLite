@@ -1,4 +1,4 @@
-#include "CppUnitLite/TestHarness.h"
+#include "CppUnitLite/CppUnitLite.h"
 #include "CppUnitLite/TestDefaultConfig.h"
 #include "Deque.h"
 

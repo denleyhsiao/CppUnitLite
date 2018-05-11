@@ -1,8 +1,6 @@
 #ifndef D_CommadnLineTestRunner_H
 #define D_CommadnLineTestRunner_H
 
-#include "TestHarness.h"
-
 class CommandLineTestRunner
 {
 public:
