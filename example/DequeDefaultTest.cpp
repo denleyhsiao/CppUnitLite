@@ -1,5 +1,4 @@
 #include "CppUnitLite/CppUnitLite.h"
-#include "CppUnitLite/TestDefaultConfig.h"
 #include "Deque.h"
 
 TEST( DequeDefault, construction)
