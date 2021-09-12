@@ -18,10 +18,10 @@ configure_file (
 option(BUILD_STATIC_LIBRARY "Build static library" ON)
 option(ENABLE_MEMORYLEAKWARN "Open memory leak warn" ON)
 
-include_directories("${CMAKE_SOURCE_DIR}/include/CppUnitLite"
+include_directories("${PROJECT_SOURCE_DIR}/include/CppUnitLite"
   "${PROJECT_BINARY_DIR}"
   )
-  
+
 include("${PROJECT_SOURCE_DIR}/cmake/util.cmake")
 getLibraryType(${BUILD_STATIC_LIBRARY} lib_type)
 add_library(${PROJ_NAME} ${lib_type} "")
@@ -38,11 +38,11 @@ target_sources(${PROJ_NAME}
   "${PROJECT_SOURCE_DIR}/src/TestResult.cpp"
   "${PROJECT_SOURCE_DIR}/src/${type}MemoryLeakWarning.cpp"
   )
-  
+
 install (TARGETS ${PROJ_NAME} DESTINATION lib)
 install (DIRECTORY "${PROJECT_SOURCE_DIR}/include/"
            DESTINATION include)
-           
+
 include (InstallRequiredSystemLibraries)
 set (CPACK_RESOURCE_FILE_LICENSE
   "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
