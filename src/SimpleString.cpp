@@ -4,7 +4,7 @@
 //
 
 
-#include "SimpleString.h"
+#include "CppUnitLite/SimpleString.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,7 +39,7 @@ SimpleString& SimpleString::operator= (const SimpleString& other)
 	{
 		delete[] buffer;
 		buffer = new char [other.size() + 1];
-		strcpy(buffer, other.buffer);	
+		strcpy(buffer, other.buffer);
 	}
 	return *this;
 }

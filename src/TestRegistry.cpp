@@ -4,11 +4,11 @@
 //
 
 
-#include "Test.h"
-#include "TestResult.h"
-#include "TestRegistry.h"
-#include "Failure.h"
-#include "MemoryLeakWarning.h"
+#include "CppUnitLite/Test.h"
+#include "CppUnitLite/TestResult.h"
+#include "CppUnitLite/TestRegistry.h"
+#include "CppUnitLite/Failure.h"
+#include "CppUnitLite/MemoryLeakWarning.h"
 #include <stdio.h>
 
 TestRegistry::TestRegistry()
@@ -19,41 +19,41 @@ TestRegistry::TestRegistry()
 {
 }
 
-void TestRegistry::addTest (Test *test) 
+void TestRegistry::addTest (Test *test)
 {
 	instance ().add (test);
 }
 
 
-void TestRegistry::runAllTests (TestResult& result) 
+void TestRegistry::runAllTests (TestResult& result)
 {
 	instance ().run (result);
 }
 
-TestRegistry& TestRegistry::instance () 
+TestRegistry& TestRegistry::instance ()
 {
 	static TestRegistry registry;
 	return registry;
 }
 
 
-void TestRegistry::add (Test *test) 
+void TestRegistry::add (Test *test)
 {
 	if (tests == 0) {
 		tests = test;
 		return;
 	}
-	
+
 	test->setNext (tests);
 	tests = test;
 }
 
 
-void TestRegistry::run (TestResult& result) 
+void TestRegistry::run (TestResult& result)
 {
 	dotCount = 0;
 	result.testsStarted ();
-	
+
 	for (Test *test = tests; test != 0; test = test->getNext ())
 	{
 		result.countTest();
@@ -65,18 +65,18 @@ void TestRegistry::run (TestResult& result)
 			test->run(result);
 			result.countRun();
 			test->tearDown();
-			
+
 			if (MemoryLeakWarning::UsageIsNotBallanced())
 			{
 				result.addFailure(Failure(test, MemoryLeakWarning::Message()));
 			}
 		}
 	}
-	
+
 	result.testsEnded ();
 }
 
-void TestRegistry::verbose() 
+void TestRegistry::verbose()
 {
     instance().verbose_ = 1;
 }
@@ -88,15 +88,15 @@ void TestRegistry::filter(SimpleString& f)
 
 bool TestRegistry::testShouldRun(Test* test, TestResult& result)
 {
-	
+
     if (test->getName().contains(filter_) )
 		return true;
     else
     {
 		result.countFilteredOut();
 		return false;;
-    } 
-	
+    }
+
 }
 
 
@@ -110,5 +110,5 @@ void TestRegistry::print(Test* test)
 		if (++dotCount % 50 == 0)
 			printf("\n");
 	}
-	
+
 }

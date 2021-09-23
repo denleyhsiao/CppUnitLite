@@ -14,12 +14,11 @@
 #ifndef CPPUNITLITE_H
 #define CPPUNITLITE_H
 
-#include "Test.h"
-#include "TestResult.h"
-#include "Failure.h"
-#include "EqualsFailure.h"
-#include "TestRegistry.h"
-#include "CommandLineTestRunner.h"
+#include "CppUnitLite/Test.h"
+#include "CppUnitLite/TestResult.h"
+#include "CppUnitLite/Failure.h"
+#include "CppUnitLite/EqualsFailure.h"
+#include "CppUnitLite/TestRegistry.h"
+#include "CppUnitLite/CommandLineTestRunner.h"
 
 #endif
-

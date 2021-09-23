@@ -25,7 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "CppUTest/MemoryLeakWarning.h"
+#include "CppUnitLite/CppUTest/MemoryLeakWarning.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -41,7 +41,7 @@ class MemoryLeakWarningData
 {
 	public:
 		MemoryLeakWarningData();
-		
+
 		int initialBlocksUsed;
 		int initialArraysUsed;
 
@@ -104,8 +104,8 @@ MemoryLeakWarning* MemoryLeakWarning::_latest = NULL;
 
 MemoryLeakWarning::MemoryLeakWarning()
 {
-	_latest = this; 
-	CreateData();	
+	_latest = this;
+	CreateData();
 }
 
 MemoryLeakWarning::~MemoryLeakWarning()
@@ -138,7 +138,7 @@ void MemoryLeakWarning::Enable()
 
 const char*  MemoryLeakWarning::FinalReport(int toBeDeletedLeaks)
 {
-  if (_impl->initialBlocksUsed != (allocatedBlocks-toBeDeletedLeaks) 
+  if (_impl->initialBlocksUsed != (allocatedBlocks-toBeDeletedLeaks)
           || _impl->initialArraysUsed != allocatedArrays )
     {
       printf("initial blocks=%d, allocated blocks=%d\ninitial arrays=%d, allocated arrays=%d\n",
@@ -221,5 +221,5 @@ void* operator new(size_t size, const char* file, int line)
 {
     allocatedBlocks++;
     return malloc(size);
-    
+
 }

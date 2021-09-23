@@ -4,11 +4,11 @@
 //
 
 
-#include "Test.h"
-#include "TestRegistry.h"
-#include "TestResult.h"
-#include "Failure.h"
-#include "EqualsFailure.h"
+#include "CppUnitLite/Test.h"
+#include "CppUnitLite/TestRegistry.h"
+#include "CppUnitLite/TestResult.h"
+#include "CppUnitLite/Failure.h"
+#include "CppUnitLite/EqualsFailure.h"
 #include <stdio.h>
 
 namespace
@@ -17,14 +17,14 @@ namespace
 }
 
 
-Test::Test (const SimpleString& groupName, 
-            const SimpleString& testName, 
-            const SimpleString& fileName, 
-            int lineNumber, 
-            void (*setUp)(), 
-            void (*tearDown)()) 
+Test::Test (const SimpleString& groupName,
+            const SimpleString& testName,
+            const SimpleString& fileName,
+            int lineNumber,
+            void (*setUp)(),
+            void (*tearDown)())
 			: group_(groupName)
-			, name_(testName) 
+			, name_(testName)
 			, file_(fileName)
 			, lineNumber_(lineNumber)
 			, setUp_(setUp)
@@ -34,11 +34,11 @@ Test::Test (const SimpleString& groupName,
 }
 
 IgnoredTest::IgnoredTest(
-						 const SimpleString& groupName, 
-						 const SimpleString& testName, 
-						 const SimpleString& fileName, 
+						 const SimpleString& groupName,
+						 const SimpleString& testName,
+						 const SimpleString& fileName,
 						 int lineNumber)
-						 : Test(groupName, testName, fileName, lineNumber, doNothing, doNothing) 
+						 : Test(groupName, testName, fileName, lineNumber, doNothing, doNothing)
 {
 }
 
@@ -55,38 +55,38 @@ Test *Test::getNext() const
 
 
 void Test::setNext(Test *test)
-{	
+{
 	next_ = test;
 }
 
 const SimpleString& Test::getName() const
-{	
-	
+{
+
 	return name_;
 }
 
 SimpleString Test::getFormattedName() const
-{	
+{
     const char* format = "%s(%s, %s)";
     char *stage = new char [strlen(format) - (3 * strlen("%s"))
         + getMacroName().size()
-		+ group_.size () 
+		+ group_.size ()
 		+ name_.size ()
 		+ 1];
-	
+
 	sprintf(stage, format,
 		getMacroName().asCharString(),
-		      group_.asCharString(), 
+		      group_.asCharString(),
 			  name_.asCharString());
-	
+
 	SimpleString formattedName(stage);
-	
+
     delete[] stage;
 	return formattedName;
 }
 
 const SimpleString& Test::getFile() const
-{	
+{
 	return file_;
 }
 
@@ -105,4 +105,3 @@ void Test::tearDown()
 {
 	(*tearDown_)();
 }
-

@@ -25,7 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "MemoryLeakWarning.h"
+#include "CppUnitLite/MemoryLeakWarning.h"
 
 #include <e32base.h>
 
@@ -42,8 +42,8 @@ public:
 
 MemoryLeakWarning::MemoryLeakWarning()
 {
-	_latest = this; 
-	CreateData();	
+	_latest = this;
+	CreateData();
 }
 
 MemoryLeakWarning::~MemoryLeakWarning()
@@ -61,16 +61,16 @@ const char* MemoryLeakWarning::FinalReport(int toBeDeletedLeaks)
 	if( cellDifference != toBeDeletedLeaks ) {
 		return "Heap imbalance after test\n";
 	}
-	
+
 	TInt processHandles;
 	TInt threadHandles;
 	RThread().HandleCount(processHandles, threadHandles);
-	
+
 	if(_impl->iInitialProcessHandleCount != processHandles ||
 		_impl->iInitialThreadHandleCount != threadHandles) {
 		return "Handle count imbalance after test\n";
 	}
-	
+
 	return "";
 }
 

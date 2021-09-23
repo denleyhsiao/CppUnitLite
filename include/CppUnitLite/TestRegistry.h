@@ -6,15 +6,15 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
 // TESTREGISTRY.H
-// 
-// TestRegistry is a singleton collection of all the tests to run in a system.  
-// 
+//
+// TestRegistry is a singleton collection of all the tests to run in a system.
+//
 ///////////////////////////////////////////////////////////////////////////////
 
 #ifndef TESTREGISTRY_H
 #define TESTREGISTRY_H
 
-#include "SimpleString.h"
+#include "CppUnitLite/SimpleString.h"
 
 class Test;
 class TestResult;
@@ -36,7 +36,7 @@ private:
   void run(TestResult& result);
   bool testShouldRun(Test* test, TestResult& result);
   void print(Test* test);
-	
+
   Test *tests;
   bool verbose_;
   SimpleString filter_;

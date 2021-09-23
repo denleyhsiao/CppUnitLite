@@ -17,7 +17,7 @@
 #ifndef FAILURE_H
 #define FAILURE_H
 
-#include "SimpleString.h"
+#include "CppUnitLite/SimpleString.h"
 
 class Test;
 
@@ -35,13 +35,13 @@ public:
 protected:
 	void setMessage(const char* value);
 	const char* getMessage() const;
-    
+
 private:
 	Failure& operator=(const Failure&);
 	virtual void printLeader() const;
     virtual void printSpecifics() const;
     virtual void printTrailer() const;
-	
+
 	SimpleString message;
 	SimpleString testName;
 	SimpleString fileName;

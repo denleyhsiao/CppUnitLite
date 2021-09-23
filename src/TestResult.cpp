@@ -4,8 +4,8 @@
 //
 
 
-#include "TestResult.h"
-#include "Failure.h"
+#include "CppUnitLite/TestResult.h"
+#include "CppUnitLite/Failure.h"
 
 #include <stdio.h>
 
@@ -21,14 +21,14 @@ TestResult::TestResult ()
 }
 
 
-void TestResult::testsStarted () 
+void TestResult::testsStarted ()
 {
 }
 
 
-void TestResult::addFailure (const Failure& failure) 
+void TestResult::addFailure (const Failure& failure)
 {
-    failure.print();		
+    failure.print();
 	failureCount++;
 }
 
@@ -57,12 +57,12 @@ void TestResult::countIgnored()
 	ignoredCount++;
 }
 
-void TestResult::testsEnded () 
+void TestResult::testsEnded ()
 {
 	if (failureCount > 0)
 		fprintf (stdout, "\nErrors (%d failures, ", failureCount);
 	else
 		fprintf (stdout, "\nOK (");
-	fprintf (stdout, "%d tests , %d ran, %d checks, %d ignored, %d filtered out)\n", 
+	fprintf (stdout, "%d tests , %d ran, %d checks, %d ignored, %d filtered out)\n",
 		testCount, runCount, checkCount, ignoredCount , filteredOutCount);
 }

@@ -6,7 +6,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
 // TEST.H
-// 
+//
 // This file contains the Test class along with the macros which make effective
 // in the harness.
 //
@@ -16,7 +16,7 @@
 #define TEST_H
 
 
-#include "SimpleString.h"
+#include "CppUnitLite/SimpleString.h"
 #include <string.h>
 
 class TestResult;
@@ -26,17 +26,17 @@ class TestResult;
 class Test
 {
 public:
-	
-	Test (const SimpleString& groupName, 
-		const SimpleString& testName, 
+
+	Test (const SimpleString& groupName,
+		const SimpleString& testName,
 		const SimpleString& fileName,
-		int lineNumber,         
-		void (*setUp)(), 
+		int lineNumber,
+		void (*setUp)(),
 		void (*tearDown)());
-	
+
 	virtual void	run (TestResult& result) = 0;
 	virtual SimpleString getFormattedName() const;
-	
+
 	void setNext(Test *test);
 	Test *getNext () const;
 	const SimpleString& getName() const;
@@ -44,13 +44,13 @@ public:
 	int getLineNumber() const;
 	void setUp();
 	void tearDown();
-	
+
 protected:
-	
+
 	virtual SimpleString getMacroName() const {return "TEST";}
-	
+
 private:
-	
+
 	SimpleString group_;
 	SimpleString name_;
 	SimpleString file_;
@@ -59,22 +59,22 @@ private:
 	Test *next_;
 	void (*setUp_)();
 	void (*tearDown_)();
-	
+
 };
 
-class IgnoredTest : public Test 
+class IgnoredTest : public Test
 {
 public:
-	IgnoredTest(const SimpleString& groupName, 
-		const SimpleString& testName, 
+	IgnoredTest(const SimpleString& groupName,
+		const SimpleString& testName,
 		const SimpleString& fileName,
-		int lineNumber);      
-	
+		int lineNumber);
+
 	virtual void	run (TestResult& result);
-	
+
 protected:
 	virtual SimpleString getMacroName() const {return "IGNORE_TEST";}
-	
+
 };
 
 
@@ -84,14 +84,14 @@ protected:
 { public: testGroup##testName##Test () : Test (#testGroup, #testName, __FILE__,__LINE__, &SetUp, &TearDown) {} \
 	void run (TestResult& result_); } \
     testGroup##testName##Instance; \
-void testGroup##testName##Test::run (TestResult& result_) 
+void testGroup##testName##Test::run (TestResult& result_)
 
 #define IGNORE_TEST(testGroup, testName)\
 	class testGroup##testName##Test : public IgnoredTest \
 { public: testGroup##testName##Test () : IgnoredTest (#testGroup, #testName, __FILE__,__LINE__) {} \
 	void thisNeverRuns (TestResult& result_); } \
     testGroup##testName##Instance; \
-void testGroup##testName##Test::thisNeverRuns (TestResult& result_) 
+void testGroup##testName##Test::thisNeverRuns (TestResult& result_)
 
 #define EXPORT_TEST_GROUP(testGroup)\
 int externTestGroup##testGroup = 0;
@@ -115,7 +115,7 @@ int* p##testGroup = &externTestGroup##testGroup;
 	return;}\
 }
 
-//This check checks for char* string equality using strcmp.  
+//This check checks for char* string equality using strcmp.
 //This makes up for the fact that CHECK_EQUAL only compares the pointers to char*'s
 #define STRCMP_EQUAL(expected,actual)\
 { result_.countCheck(); \

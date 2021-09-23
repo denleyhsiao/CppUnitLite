@@ -17,8 +17,8 @@
 #ifndef EQUALS_FAILURE_H
 #define EQUALS_FAILURE_H
 
-#include "SimpleString.h"
-#include "Failure.h"
+#include "CppUnitLite/SimpleString.h"
+#include "CppUnitLite/Failure.h"
 
 
 class EqualsFailure : public Failure

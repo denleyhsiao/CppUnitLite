@@ -3,16 +3,15 @@
 // Released under the terms of the GNU General Public License version 2 or later.
 //
 
-
-#include "CommandLineTestRunner.h"
-#include "TestResult.h"
-#include "TestRegistry.h"
 #include "CppUnitLiteConfig.h"
+#include "CppUnitLite/CommandLineTestRunner.h"
+#include "CppUnitLite/TestResult.h"
+#include "CppUnitLite/TestRegistry.h"
 #include <stdlib.h>
 #include <string.h>
 
 #ifdef ENABLE_MEMORYLEAKWARN
-#include "MemoryLeakWarning.h"
+#include "CppUnitLite/MemoryLeakWarning.h"
 #endif
 
 int CommandLineTestRunner::repeat = 0;

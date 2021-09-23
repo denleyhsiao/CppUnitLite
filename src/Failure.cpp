@@ -5,24 +5,24 @@
 
 
 
-#include "Failure.h"
-#include "Test.h"
+#include "CppUnitLite/Failure.h"
+#include "CppUnitLite/Test.h"
 
 #include <cstdio>  // for sprintf()
 #include <cstring> // for strlen()
 
 
-Failure::Failure(Test* test, const SimpleString& theMessage) 
-: testName (test->getFormattedName()) 
-, fileName (test->getFile()) 
+Failure::Failure(Test* test, const SimpleString& theMessage)
+: testName (test->getFormattedName())
+, fileName (test->getFile())
 , lineNumber (test->getLineNumber())
 , message (theMessage)
 {
 }
 
-Failure::Failure(Test* test) 
-: testName (test->getFormattedName()) 
-, fileName (test->getFile()) 
+Failure::Failure(Test* test)
+: testName (test->getFormattedName())
+, fileName (test->getFile())
 , lineNumber (test->getLineNumber())
 , message("no message")
 {
@@ -43,7 +43,7 @@ void Failure::setMessage( const char* value )
 
 const char* Failure::getMessage() const
 {
-	return message.asCharString();	
+	return message.asCharString();
 }
 
 void Failure::printLeader()const

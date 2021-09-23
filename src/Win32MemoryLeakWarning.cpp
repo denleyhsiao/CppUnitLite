@@ -1,4 +1,4 @@
-#include "MemoryLeakWarning.h"
+#include "CppUnitLite/MemoryLeakWarning.h"
 
 #define CRTDBG_MAP_ALLOC
 #include <stdlib.h>
@@ -38,19 +38,19 @@ void MemoryLeakWarning::CheckPointUsage()
     //char* c = new char[64];
     //_CrtMemCheckpoint( &s2 );
     //_CrtMemDifference( &s3, &s1, &s2);
-	
-	
+
+
     //char* d = new char[1024];
     //_CrtMemCheckpoint( &s2 );
     //_CrtMemDifference( &s3, &s1, &s2);
-	
+
     //delete c;
     //_CrtMemCheckpoint( &s2 );
     //_CrtMemDifference( &s3, &s1, &s2);
     //delete d;
     //_CrtMemCheckpoint( &s2 );
     //_CrtMemDifference( &s3, &s1, &s2);
-	
+
 }
 
 bool MemoryLeakWarning::UsageIsNotBallanced()

@@ -1,4 +1,4 @@
-#include "MemoryLeakWarning.h"
+#include "CppUnitLite/MemoryLeakWarning.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -12,12 +12,12 @@ static char message[100] = "";
 
 void  FinalReport()
 {
-	
+
 	if (initialBlocksUsed != allocatedBlocks || initialArraysUsed != allocatedArrays )
     {
 		printf("initial blocks=%d, allocated blocks=%d\ninitial arrays=%d, allocated arrays=%d\n",
 			initialBlocksUsed, allocatedBlocks, initialArraysUsed, allocatedArrays);
-		
+
 		printf("Memory new/delete imbalance after running tests\n");
     }
 }
