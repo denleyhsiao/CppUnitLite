@@ -7,7 +7,7 @@
 #include "CommandLineTestRunner.h"
 #include "TestResult.h"
 #include "TestRegistry.h"
-#include "config.h"
+#include "CppUnitLiteConfig.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -21,16 +21,16 @@ void CommandLineTestRunner::RunAllTests(int ac, char** av)
 {
 #ifdef ENABLE_MEMORYLEAKWARN
 	MemoryLeakWarning::Enable();
-#endif	
+#endif
 
 	SetOptions(ac, av);
-	
+
 	do
 	{
 		TestResult tr;
 		TestRegistry::runAllTests(tr);
 	} while (--repeat);
-	
+
 #ifdef ENABLE_MEMORYLEAKWARN
 	MemoryLeakWarning::Report();
 #endif
@@ -57,7 +57,7 @@ void CommandLineTestRunner::SetOptions(int ac, char** av)
 void CommandLineTestRunner::SetRepeatCount(int ac, char** av, int& i)
 {
 	repeat = 0;
-	
+
 	if (strlen(av[i]) > 2)
 		repeat = atoi(av[i] + 2);
 	else if (i + 1 < ac)
@@ -66,9 +66,8 @@ void CommandLineTestRunner::SetRepeatCount(int ac, char** av, int& i)
 		if (repeat != 0)
 			i++;
 	}
-	
+
 	if (0 == repeat)
 		repeat = 2;
-	
-}
 
+}

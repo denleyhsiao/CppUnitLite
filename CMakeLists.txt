@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.0)
 project(CppUnitLite VERSION 0.1.0 LANGUAGES CXX)
 
 configure_file(
-  "${PROJECT_SOURCE_DIR}/cmake/config.h.in"
-  "${PROJECT_BINARY_DIR}/config.h"
+  "${PROJECT_SOURCE_DIR}/CppUnitLiteConfig.h.in"
+  "${PROJECT_BINARY_DIR}/CppUnitLiteConfig.h"
 )
 option(BUILD_STATIC_LIBRARY "Build static library" ON)
 option(ENABLE_MEMORYLEAKWARN "Open memory leak warn" ON)
