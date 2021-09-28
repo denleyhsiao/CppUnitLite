@@ -34,6 +34,11 @@ target_sources(${PROJECT_NAME}
     "${PROJECT_SOURCE_DIR}/src/TestResult.cpp"
     "${PROJECT_SOURCE_DIR}/src/${type}MemoryLeakWarning.cpp"
 )
+set_target_properties(${PROJECT_NAME}
+  PROPERTIES
+    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+    SOVERSION ${PROJECT_VERSION_MAJOR}
+)
 
 include(GNUInstallDirs)
 install(TARGETS ${PROJECT_NAME}
