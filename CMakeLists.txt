@@ -9,13 +9,12 @@ configure_file(
   "${PROJECT_SOURCE_DIR}/CppUnitLiteConfig.h.in"
   "${PROJECT_BINARY_DIR}/CppUnitLiteConfig.h"
 )
-option(BUILD_STATIC_LIBRARY "Build static library" ON)
+
 option(ENABLE_MEMORYLEAKWARN "Open memory leak warn" ON)
 include("${PROJECT_SOURCE_DIR}/cmake/util.cmake")
-getLibraryType(${BUILD_STATIC_LIBRARY} lib_type)
 getMemoryLeakType(type)
 
-add_library(${PROJECT_NAME} ${lib_type})
+add_library(${PROJECT_NAME})
 target_include_directories(${PROJECT_NAME}
   PUBLIC
     "$<INSTALL_INTERFACE:include>"

@@ -19,7 +19,6 @@ brew tap denleyhsiao/tap && brew install CppUnitLite
 ### By source
 1. Download source: `git clone https://github.com/denleyhsiao/CppUnitLite`
 2. Modify configure: `ccmake .`
-    - BUILD_STATIC_LIBRARY： Build static or shared library, default static
     - ENABLE_MEMORYLEAKWARN：Open or close memory leak warn check，default open
 3. Build & install
 
@@ -31,7 +30,7 @@ make install
 4. Uninstall：`cat install_manifest.txt | sudo xargs rm`
 
 ## Run
-This is a unit test application based deque ：`DequeTest`，and use CppUnitLite as unit test framework. 
+This is a unit test application based deque ：`DequeTest`，and use CppUnitLite as unit test framework.
 It include follow files:
 
 | filename |description |
@@ -40,7 +39,7 @@ It include follow files:
 |DequeTest.cpp|unit test file with self-define SetUp/TearDown|
 |DequeDefaultTest.cpp|unit test file with default SetUp/TearDown|
 |Deque.h/Deque.cpp|deque define & implement file|
-    
+
 [travis_image]: https://travis-ci.org/denleyhsiao/CppUnitLite.svg
 [travis_url]: https://travis-ci.org/denleyhsiao/CppUnitLite
 

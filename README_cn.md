@@ -12,7 +12,6 @@ brew tap denleyhsiao/tap && brew install CppUnitLite
 ### 通过源码
 1. 下载源码：`git clone https://github.com/denleyhsiao/CppUnitLite`，进入源码目录
 2. 修改配置(可选)：`ccmake .`
-    - BUILD_STATIC_LIBRARY: 创建静态库还是动态库，缺省静态库
     - ENABLE_MEMORYLEAKWARN：是否打开内存泄漏检测，缺省打开
 3. 编译安装
 ```bash
